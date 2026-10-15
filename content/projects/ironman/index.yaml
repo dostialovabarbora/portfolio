@@ -1,0 +1,39 @@
+title: IRONMAN
+published: true
+category: digital-mark
+order: 30
+year: '2026'
+tagline: Going to say something right here, yeehaaw. Testing this two liner, brace yourself.
+client: IRONMAN
+thumbnail: /images/projects/ironman/02-bike.webp
+header:
+  background: '#c8102e'
+  backgroundTo: ''
+  textColor: '#ffffff'
+blocks:
+- discriminant: text
+  value:
+    columns:
+    - I knew creativity was part of me long before I had the words for it. Design, art, and curiosity always felt natural — less like a skill I picked up, more like a lens through which I see the world. For over 11 years, I’ve been turning ambitious ideas into brands, shaping digital products with purpose, and helping visions become something tangible, usable, and alive.
+    - Now, when I’m not feeding my endurance sports addiction, I work as a freelance multidisciplinary designer and as a Senior Product Designer at STRV. I’ve led design phases for clients including Arnold Schwarzenegger, MLS, IRONMAN, NHL, and 25+ others. I’m drawn to strong ideas, sharp execution, AND work that has enough personality to leave a mark.
+- discriminant: pair
+  value:
+    left:
+      image: /images/projects/ironman/01-left.webp
+      alt: ''
+      background: '#c8102e'
+    right:
+      image: /images/projects/ironman/01-right.webp
+      alt: ''
+      background: '#000000'
+- discriminant: image
+  value:
+    image: /images/projects/ironman/02-bike.webp
+    alt: ''
+    background: '#000000'
+    fit: cover
+    rounded: true
+- discriminant: text
+  value:
+    columns:
+    - I knew creativity was part of me long before I had the words for it. Design, art, and curiosity always felt natural — less like a skill I picked up, more like a lens through which I see the world. For over 11 years, I’ve been turning ambitious ideas into brands, shaping digital products with purpose, and helping visions become something tangible, usable, and alive.

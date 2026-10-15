@@ -1,26 +1,102 @@
 @import "tailwindcss";
 
+/* ---------- Licensed fonts (self-hosted, converted from the OTF/TTF sources) ---------- */
+@font-face {
+  font-family: "Suisse Intl";
+  src: url("/fonts/SuisseIntl-Book.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Suisse Intl";
+  src: url("/fonts/SuisseIntl-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Monorama";
+  src: url("/fonts/Monorama-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ---------- Design tokens (from Figma) ---------- */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --ink: #000000;
+  --paper: #ffffff;
+  --sand: #f8f7f5; /* case-study page + statement card */
+  --signal: #ff0f0f; /* Monorama body copy */
+  --muted: rgba(0, 0, 0, 0.5);
+  --line: rgba(0, 0, 0, 0.16);
+
+  /* Layout scales with the 1728px Figma frame */
+  --frame: 1728;
+  --gutter: clamp(16px, 4.63vw, 80px); /* 80 @ 1728 */
+  --gutter-case: clamp(12px, 2.31vw, 40px); /* 40 @ 1728 */
+  --gap: clamp(10px, 1.04vw, 18px); /* 18 @ 1728 */
+  --radius: clamp(16px, 1.85vw, 32px); /* 32 @ 1728 */
+  --radius-lg: clamp(20px, 2.78vw, 48px); /* 48 @ 1728 */
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-ink: var(--ink);
+  --color-paper: var(--paper);
+  --color-sand: var(--sand);
+  --color-signal: var(--signal);
+  --color-muted: var(--muted);
+  --font-headline: "Stack Sans Headline Variable", "Helvetica Neue", Arial, sans-serif;
+  --font-display: "Suisse Intl", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "Monorama", ui-monospace, "SF Mono", Menlo, monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-headline);
+}
+
+::selection {
+  background: var(--signal);
+  color: var(--paper);
+}
+
+/* Monorama red body copy, used in the About intro and every case study */
+.mono-copy {
+  font-family: var(--font-mono);
+  color: var(--signal);
+  font-size: clamp(15px, 1.273vw, 22px);
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+  text-align: justify;
+  hyphens: auto;
+}
+
+/* Uppercase label style (nav, hero labels) */
+.label {
+  font-family: var(--font-headline);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1;
+  letter-spacing: -0.002em;
+  text-transform: uppercase;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }

@@ -1,0 +1,70 @@
+title: Velaa
+published: true
+category: digital-mark
+order: 40
+year: '2026'
+tagline: Going to say something right here, yeehaaw. Testing this two liner, brace yourself.
+client: Velaa Private Island
+thumbnail: /images/projects/velaa/03-beach.webp
+header:
+  background: '#d8ab43'
+  backgroundTo: ''
+  textColor: '#ffffff'
+blocks:
+- discriminant: text
+  value:
+    columns:
+    - I knew creativity was part of me long before I had the words for it. Design, art, and curiosity always felt natural — less like a skill I picked up, more like a lens through which I see the world. For over 11 years, I’ve been turning ambitious ideas into brands, shaping digital products with purpose, and helping visions become something tangible, usable, and alive.
+    - Now, when I’m not feeding my endurance sports addiction, I work as a freelance multidisciplinary designer and as a Senior Product Designer at STRV. I’ve led design phases for clients including Arnold Schwarzenegger, MLS, IRONMAN, NHL, and 25+ others. I’m drawn to strong ideas, sharp execution, AND work that has enough personality to leave a mark.
+- discriminant: pair
+  value:
+    left:
+      image: /images/projects/velaa/01-left.webp
+      alt: ''
+      background: '#000000'
+    right:
+      image: /images/projects/velaa/01-right.webp
+      alt: ''
+      background: '#000000'
+- discriminant: image
+  value:
+    image: /images/projects/velaa/02-editorial.webp
+    alt: ''
+    background: '#4a4238'
+    fit: cover
+    rounded: true
+- discriminant: image
+  value:
+    image: /images/projects/velaa/03-beach.webp
+    alt: ''
+    background: '#aba7a1'
+    fit: cover
+    rounded: true
+- discriminant: text
+  value:
+    columns:
+    - I knew creativity was part of me long before I had the words for it. Design, art, and curiosity always felt natural — less like a skill I picked up, more like a lens through which I see the world. For over 11 years, I’ve been turning ambitious ideas into brands, shaping digital products with purpose, and helping visions become something tangible, usable, and alive.
+- discriminant: image
+  value:
+    image: /images/projects/velaa/04-villa.webp
+    alt: ''
+    background: '#0a0a3a'
+    fit: cover
+    rounded: true
+- discriminant: pair
+  value:
+    left:
+      image: /images/projects/velaa/05-left.webp
+      alt: ''
+      background: '#000000'
+    right:
+      image: /images/projects/velaa/05-right.webp
+      alt: ''
+      background: '#000000'
+- discriminant: image
+  value:
+    image: /images/projects/velaa/06-note.webp
+    alt: ''
+    background: '#f8f7f5'
+    fit: cover
+    rounded: false
