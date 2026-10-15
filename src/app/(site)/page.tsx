@@ -1,13 +1,18 @@
+import { FeaturedShowcase } from "@/components/FeaturedShowcase";
+import { ProjectIndex } from "@/components/ProjectIndex";
 import { SiteNav } from "@/components/SiteNav";
-import { WorkIndex } from "@/components/WorkIndex";
+import { getIndexItems } from "@/lib/content";
 
-export default function Home() {
+export default async function Home() {
+  const items = await getIndexItems("digital-mark");
+  const featured = items.filter((i) => i.featured);
   return (
     <>
       <SiteNav />
-      <main className="pt-[clamp(24px,3vw,56px)]">
+      <main>
         <h1 className="sr-only">Digital mark — selected work</h1>
-        <WorkIndex category="digital-mark" />
+        <FeaturedShowcase items={featured} />
+        <ProjectIndex items={items} />
       </main>
     </>
   );

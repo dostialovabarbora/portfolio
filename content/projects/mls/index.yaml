@@ -5,7 +5,15 @@ order: 20
 year: '2024'
 tagline: Going to say something right here, yeehaaw. Testing this two liner, brace yourself.
 client: Major League Soccer
-thumbnail: /images/projects/mls/03-profile.webp
+summary: Matchday, profiles and community for Major League Soccer fans.
+services:
+- product-design
+featured: true
+featuredImages:
+- /images/projects/mls/featured-1.webp
+- /images/projects/mls/featured-2.webp
+- /images/projects/mls/featured-3.webp
+thumbnail: /images/projects/mls/thumbnail.webp
 header:
   background: '#111441'
   backgroundTo: ''

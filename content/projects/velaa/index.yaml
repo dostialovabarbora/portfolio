@@ -5,7 +5,15 @@ order: 40
 year: '2026'
 tagline: Going to say something right here, yeehaaw. Testing this two liner, brace yourself.
 client: Velaa Private Island
-thumbnail: /images/projects/velaa/03-beach.webp
+summary: A digital home for Velaa Private Island in the Maldives.
+services:
+- product-design
+featured: true
+featuredImages:
+- /images/projects/velaa/featured-1.webp
+- /images/projects/velaa/featured-2.webp
+- /images/projects/velaa/featured-3.webp
+thumbnail: /images/projects/velaa/thumbnail.webp
 header:
   background: '#d8ab43'
   backgroundTo: ''

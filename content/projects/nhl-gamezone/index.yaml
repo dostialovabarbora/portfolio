@@ -5,7 +5,15 @@ order: 60
 year: '2026'
 tagline: Going to say something right here, yeehaaw. Testing this two liner, brace yourself.
 client: NHL
-thumbnail: /images/projects/nhl-gamezone/02-ice.webp
+summary: Predictions, streaks and rewards for NHL Gamezone.
+services:
+- product-design
+featured: true
+featuredImages:
+- /images/projects/nhl-gamezone/featured-1.webp
+- /images/projects/nhl-gamezone/featured-2.webp
+- /images/projects/nhl-gamezone/featured-3.webp
+thumbnail: /images/projects/nhl-gamezone/thumbnail.webp
 header:
   background: '#121111'
   backgroundTo: ''

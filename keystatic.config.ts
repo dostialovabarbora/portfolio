@@ -26,6 +26,16 @@ const colour = (label: string, defaultValue: string) =>
     validation: { length: { min: 4, max: 9 } },
   });
 
+export const SERVICES = [
+  { label: "branding", value: "branding" },
+  { label: "product design", value: "product-design" },
+  { label: "creative direction", value: "creative-direction" },
+  { label: "motion", value: "motion" },
+  { label: "web", value: "web" },
+  { label: "illustration", value: "illustration" },
+  { label: "design consultancy", value: "design-consultancy" },
+];
+
 export default config({
   storage: githubRepo ? { kind: "github", repo: githubRepo } : { kind: "local" },
   ui: {
@@ -147,7 +157,28 @@ export default config({
         year: fields.text({ label: "Year", defaultValue: "2026" }),
         tagline: fields.text({ label: "Header tagline", multiline: true }),
         client: fields.text({ label: "Client" }),
-        thumbnail: image("Thumbnail (work grid)", "projects"),
+        summary: fields.text({
+          label: "Index summary",
+          description: "One line shown in the featured showcase on the homepage",
+          multiline: true,
+        }),
+        services: fields.multiselect({
+          label: "Services",
+          description: "Tags on the index; also used by the filter",
+          options: SERVICES,
+          defaultValue: ["product-design"],
+        }),
+        featured: fields.checkbox({
+          label: "Featured",
+          description: "Show in the big showcase at the top of the homepage",
+          defaultValue: false,
+        }),
+        featuredImages: fields.array(image("Image", "projects"), {
+          label: "Featured stack (up to 3 images)",
+          description: "First image sits on top of the stack",
+          validation: { length: { max: 3 } },
+        }),
+        thumbnail: image("Thumbnail (index grid & list hover)", "projects"),
         header: fields.object(
           {
             background: colour("Background", "#e43c36"),

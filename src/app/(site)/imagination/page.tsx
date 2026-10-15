@@ -1,15 +1,25 @@
+import { FeaturedShowcase } from "@/components/FeaturedShowcase";
+import { ProjectIndex } from "@/components/ProjectIndex";
 import { SiteNav } from "@/components/SiteNav";
-import { WorkIndex } from "@/components/WorkIndex";
+import { getIndexItems } from "@/lib/content";
 
 export const metadata = { title: "Imagination" };
 
-export default function Imagination() {
+export default async function Imagination() {
+  const items = await getIndexItems("imagination");
   return (
     <>
       <SiteNav />
-      <main className="pt-[clamp(24px,3vw,56px)]">
+      <main>
         <h1 className="sr-only">Imagination</h1>
-        <WorkIndex category="imagination" />
+        {items.length ? (
+          <>
+            <FeaturedShowcase items={items.filter((i) => i.featured)} />
+            <ProjectIndex items={items} />
+          </>
+        ) : (
+          <p className="label py-[20vh] text-center text-muted">New work is on its way.</p>
+        )}
       </main>
     </>
   );

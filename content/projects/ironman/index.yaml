@@ -5,7 +5,15 @@ order: 30
 year: '2026'
 tagline: Going to say something right here, yeehaaw. Testing this two liner, brace yourself.
 client: IRONMAN
-thumbnail: /images/projects/ironman/02-bike.webp
+summary: Race-day tracking and the athlete experience for IRONMAN.
+services:
+- product-design
+featured: true
+featuredImages:
+- /images/projects/ironman/featured-1.webp
+- /images/projects/ironman/featured-2.webp
+- /images/projects/ironman/featured-3.webp
+thumbnail: /images/projects/ironman/thumbnail.webp
 header:
   background: '#c8102e'
   backgroundTo: ''

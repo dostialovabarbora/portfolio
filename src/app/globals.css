@@ -55,12 +55,14 @@
 }
 
 html {
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
 }
 
 body {
+  overflow-x: clip; /* decorative scribbles/tilted cards may poke past the edge */
   background: var(--paper);
   color: var(--ink);
   font-family: var(--font-headline);

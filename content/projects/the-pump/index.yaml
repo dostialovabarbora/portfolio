@@ -5,7 +5,16 @@ order: 10
 year: '2022'
 tagline: Going to say something right here, yeehaaw. Testing this two liner, brace yourself.
 client: Arnold Schwarzenegger
-thumbnail: /images/projects/the-pump/01-video.webp
+summary: Training, community and Arnold’s archive in one app for The Pump.
+services:
+- branding
+- product-design
+featured: true
+featuredImages:
+- /images/projects/the-pump/featured-1.webp
+- /images/projects/the-pump/featured-2.webp
+- /images/projects/the-pump/featured-3.webp
+thumbnail: /images/projects/the-pump/thumbnail.webp
 header:
   background: '#e43c36'
   backgroundTo: ''
