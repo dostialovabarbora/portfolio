@@ -1,71 +1,83 @@
-title: Ask Angel
+title: Ask Angel Test
 published: true
 category: digital-mark
 order: 50
 year: '2025'
-tagline: Going to say something right here, yeehaaw. Testing this two liner, brace yourself.
+tagline: >-
+  Going to say something right here, yeehaaw. Testing this two liner, brace
+  yourself.
 client: Ask Angel
-thumbnail: /images/projects/ask-angel/02-mascots.webp
+thumbnail: /images/projects/ask-angel/thumbnail.webp
 header:
   background: '#ffd5a6'
   backgroundTo: '#f2ab5b'
   textColor: '#000000'
-  image: /images/projects/ask-angel/header.webp
+  image: /images/projects/ask-angel/header/image.webp
 blocks:
-- discriminant: text
-  value:
-    columns:
-    - I knew creativity was part of me long before I had the words for it. Design, art, and curiosity always felt natural — less like a skill I picked up, more like a lens through which I see the world. For over 11 years, I’ve been turning ambitious ideas into brands, shaping digital products with purpose, and helping visions become something tangible, usable, and alive.
-    - Now, when I’m not feeding my endurance sports addiction, I work as a freelance multidisciplinary designer and as a Senior Product Designer at STRV. I’ve led design phases for clients including Arnold Schwarzenegger, MLS, IRONMAN, NHL, and 25+ others. I’m drawn to strong ideas, sharp execution, AND work that has enough personality to leave a mark.
-- discriminant: pair
-  value:
-    left:
-      image: /images/projects/ask-angel/01-left.webp
-      alt: ''
+  - discriminant: text
+    value:
+      columns:
+        - >-
+          I knew creativity was part of me long before I had the words for it.
+          Design, art, and curiosity always felt natural — less like a skill I
+          picked up, more like a lens through which I see the world. For over 11
+          years, I’ve been turning ambitious ideas into brands, shaping digital
+          products with purpose, and helping visions become something tangible,
+          usable, and alive.
+        - >-
+          Now, when I’m not feeding my endurance sports addiction, I work as a
+          freelance multidisciplinary designer and as a Senior Product Designer
+          at STRV. I’ve led design phases for clients including Arnold
+          Schwarzenegger, MLS, IRONMAN, NHL, and 25+ others. I’m drawn to strong
+          ideas, sharp execution, AND work that has enough personality to leave
+          a mark.
+  - discriminant: pair
+    value:
+      left:
+        image: /images/projects/ask-angel/blocks/1/value/left/image.webp
+        background: '#f5e5d2'
+      right:
+        image: /images/projects/ask-angel/blocks/1/value/right/image.webp
+        background: '#f5e5d2'
+  - discriminant: image
+    value:
+      image: /images/projects/ask-angel/blocks/2/value/image.webp
+      background: '#f8f7f5'
+      fit: cover
+      rounded: false
+  - discriminant: image
+    value:
+      image: /images/projects/ask-angel/blocks/3/value/image.webp
       background: '#f5e5d2'
-    right:
-      image: /images/projects/ask-angel/01-right.webp
-      alt: ''
-      background: '#f5e5d2'
-- discriminant: image
-  value:
-    image: /images/projects/ask-angel/02-mascots.webp
-    alt: ''
-    background: '#f8f7f5'
-    fit: cover
-    rounded: false
-- discriminant: image
-  value:
-    image: /images/projects/ask-angel/03-screens.webp
-    alt: ''
-    background: '#f5e5d2'
-    fit: cover
-    rounded: true
-- discriminant: text
-  value:
-    columns:
-    - I knew creativity was part of me long before I had the words for it. Design, art, and curiosity always felt natural — less like a skill I picked up, more like a lens through which I see the world. For over 11 years, I’ve been turning ambitious ideas into brands, shaping digital products with purpose, and helping visions become something tangible, usable, and alive.
-- discriminant: image
-  value:
-    image: /images/projects/ask-angel/04-screens.webp
-    alt: ''
-    background: '#5a3b34'
-    fit: cover
-    rounded: true
-- discriminant: pair
-  value:
-    left:
-      image: /images/projects/ask-angel/05-left.webp
-      alt: ''
+      fit: cover
+      rounded: true
+  - discriminant: text
+    value:
+      columns:
+        - >-
+          I knew creativity was part of me long before I had the words for it.
+          Design, art, and curiosity always felt natural — less like a skill I
+          picked up, more like a lens through which I see the world. For over 11
+          years, I’ve been turning ambitious ideas into brands, shaping digital
+          products with purpose, and helping visions become something tangible,
+          usable, and alive.
+  - discriminant: image
+    value:
+      image: /images/projects/ask-angel/blocks/5/value/image.webp
       background: '#5a3b34'
-    right:
-      image: /images/projects/ask-angel/05-right.webp
-      alt: ''
-      background: '#5a3b34'
-- discriminant: image
-  value:
-    image: /images/projects/ask-angel/06-widget.webp
-    alt: ''
-    background: '#f8f7f5'
-    fit: cover
-    rounded: false
+      fit: cover
+      rounded: true
+  - discriminant: pair
+    value:
+      left:
+        image: /images/projects/ask-angel/blocks/6/value/left/image.webp
+        background: '#5a3b34'
+      right:
+        image: /images/projects/ask-angel/blocks/6/value/right/image.webp
+        background: '#5a3b34'
+  - discriminant: image
+    value:
+      image: /images/projects/ask-angel/blocks/7/value/image.webp
+      background: '#f8f7f5'
+      fit: cover
+      rounded: false
