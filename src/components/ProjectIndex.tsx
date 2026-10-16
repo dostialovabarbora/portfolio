@@ -53,13 +53,13 @@ function ViewButton({ label, active, onClick, children }: { label: string; activ
       aria-label={label}
       aria-pressed={active}
       onClick={onClick}
-      className="relative size-10 transition-opacity duration-300 hover:!opacity-100"
+      className="relative size-8 transition-opacity duration-300 hover:!opacity-100"
       style={{ opacity: active ? 1 : 0.24 }}
     >
       {children}
       {active ? (
         // The loop is flipped vertically in Figma; keyed so it redraws on every switch.
-        <ToggleLoop key={label} className="pointer-events-none absolute left-1/2 top-1/2 h-[50px] w-[68px] -translate-x-1/2 -translate-y-[48%] -scale-y-100" />
+        <ToggleLoop key={label} className="pointer-events-none absolute left-1/2 top-1/2 h-[40px] w-[54px] -translate-x-1/2 -translate-y-[48%] -scale-y-100" />
       ) : null}
     </button>
   );
@@ -145,7 +145,7 @@ export function ProjectIndex({ items }: { items: IndexItem[] }) {
   const [view, setView] = useState<View>("covers");
 
   return (
-    <section id="work" className="scroll-mt-6 px-[var(--gutter)] pb-[clamp(64px,7vw,120px)]">
+    <section id="work" className="scroll-mt-6 px-[var(--gutter)] pb-[clamp(80px,11.57vw,200px)]">
       <header className="flex flex-col items-center">
         <h2 className="relative text-center font-headline text-[clamp(32px,2.78vw,48px)] font-medium uppercase leading-[0.9]">
           Selected
@@ -162,7 +162,7 @@ export function ProjectIndex({ items }: { items: IndexItem[] }) {
         </div>
       </header>
 
-      <div className="mt-[clamp(40px,4.6vw,80px)]">
+      <div className="mt-[clamp(56px,6.94vw,120px)]">
         <AnimatePresence mode="wait" initial={false}>
           {view === "covers" ? (
             <motion.ul
