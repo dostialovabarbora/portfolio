@@ -43,7 +43,7 @@ export default async function AboutPage() {
         </section>
 
         {/* Services · Experience · Contact */}
-        <section id="contact" className="scroll-mt-8 px-[var(--gutter)] pb-[clamp(64px,9.26vw,160px)] pt-[clamp(96px,13.89vw,240px)]">
+        <section id="contact" className="scroll-mt-8 px-[var(--gutter)] pb-[clamp(64px,9.26vw,160px)] pt-[clamp(64px,6.94vw,120px)]">
           <div className="grid gap-x-8 gap-y-14 font-headline md:grid-cols-2 lg:grid-cols-[396fr_528fr_442fr_202fr] lg:gap-x-0">
             <Reveal className="lg:pr-4">
               <h2 className={heading}>Services</h2>
