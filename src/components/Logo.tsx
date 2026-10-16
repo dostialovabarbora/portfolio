@@ -8,7 +8,7 @@ import { useState } from "react";
  * variant (barb-1 → barb-2 → barb-3 → …). The outgoing mark blurs and lifts
  * away while the next one springs in from a slight tilt.
  */
-const VARIANTS = ["/brand/logo-1.svg", "/brand/logo-2.webp", "/brand/logo-3.webp"];
+const VARIANTS = ["/brand/logo-1.svg", "/brand/logo-nature.webp", "/brand/logo-balloon.webp"];
 const ease = [0.22, 1, 0.36, 1] as const;
 
 export function Logo() {
