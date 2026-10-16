@@ -15,11 +15,11 @@ const SHAPE: Record<CoverShape, string> = { tall: "507 / 660", square: "1 / 1", 
 function Labels({ items, className = "" }: { items: string[]; className?: string }) {
   if (!items.length) return null;
   return (
-    <ul className={`flex flex-wrap gap-2 ${className}`}>
+    <ul className={`flex flex-wrap gap-1 ${className}`}>
       {items.map((s) => (
         <li
           key={s}
-          className="whitespace-nowrap rounded-[12px] border border-ink px-[clamp(8px,0.7vw,12px)] py-[clamp(5px,0.46vw,8px)] font-display text-[clamp(12px,0.93vw,16px)] leading-[1.2] tracking-[-0.02em]"
+          className="whitespace-nowrap rounded-[12px] border border-ink px-[clamp(6px,0.46vw,8px)] py-[clamp(4px,0.35vw,6px)] font-display text-[clamp(12px,0.93vw,16px)] leading-[1.2] tracking-[-0.02em]"
         >
           {s}
         </li>
