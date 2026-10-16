@@ -1,4 +1,3 @@
-import { FeaturedShowcase } from "@/components/FeaturedShowcase";
 import { ProjectIndex } from "@/components/ProjectIndex";
 import { SiteNav } from "@/components/SiteNav";
 import { getIndexItems } from "@/lib/content";
@@ -10,16 +9,9 @@ export default async function Imagination() {
   return (
     <>
       <SiteNav />
-      <main>
+      <main className="pt-[clamp(40px,6vw,104px)]">
         <h1 className="sr-only">Imagination</h1>
-        {items.length ? (
-          <>
-            <FeaturedShowcase items={items.filter((i) => i.featured)} />
-            <ProjectIndex items={items} />
-          </>
-        ) : (
-          <p className="label py-[20vh] text-center text-muted">New work is on its way.</p>
-        )}
+        <ProjectIndex items={items} />
       </main>
     </>
   );

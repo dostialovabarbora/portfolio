@@ -12,7 +12,7 @@ function NavLink({ item, active }: { item: Item; active: boolean }) {
   return (
     <Link
       href={item.href}
-      className="label relative inline-block px-1 py-2"
+      className="relative inline-block px-1 py-2 font-display text-[16px] uppercase leading-none tracking-[-0.02em]"
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
       onFocus={() => setHover(true)}

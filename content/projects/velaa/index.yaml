@@ -1,19 +1,16 @@
 title: Velaa
 published: true
 category: digital-mark
-order: 40
+order: 50
 year: '2026'
 tagline: Going to say something right here, yeehaaw. Testing this two liner, brace yourself.
-client: Velaa Private Island
-summary: A digital home for Velaa Private Island in the Maldives.
+client: Velaa Private Island Maldives
+indexTitle: Velaa Island
 services:
-- product-design
-featured: true
-featuredImages:
-- /images/projects/velaa/featured-1.webp
-- /images/projects/velaa/featured-2.webp
-- /images/projects/velaa/featured-3.webp
-thumbnail: /images/projects/velaa/thumbnail.webp
+- website
+- visual-direction
+coverShape: tall
+thumbnail: /images/projects/velaa/cover.webp
 header:
   background: '#d8ab43'
   backgroundTo: ''

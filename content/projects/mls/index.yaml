@@ -1,19 +1,16 @@
 title: MLS
 published: true
 category: digital-mark
-order: 20
+order: 30
 year: '2024'
 tagline: Going to say something right here, yeehaaw. Testing this two liner, brace yourself.
 client: Major League Soccer
-summary: Matchday, profiles and community for Major League Soccer fans.
+indexTitle: ''
 services:
-- product-design
-featured: true
-featuredImages:
-- /images/projects/mls/featured-1.webp
-- /images/projects/mls/featured-2.webp
-- /images/projects/mls/featured-3.webp
-thumbnail: /images/projects/mls/thumbnail.webp
+- mobile-app
+- visual-direction
+coverShape: square
+thumbnail: /images/projects/mls/cover.webp
 header:
   background: '#111441'
   backgroundTo: ''

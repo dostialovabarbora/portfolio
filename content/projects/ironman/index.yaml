@@ -1,19 +1,16 @@
 title: IRONMAN
 published: true
 category: digital-mark
-order: 30
+order: 10
 year: '2026'
 tagline: Going to say something right here, yeehaaw. Testing this two liner, brace yourself.
-client: IRONMAN
-summary: Race-day tracking and the athlete experience for IRONMAN.
+client: IRONMAN Triathlon
+indexTitle: ''
 services:
-- product-design
-featured: true
-featuredImages:
-- /images/projects/ironman/featured-1.webp
-- /images/projects/ironman/featured-2.webp
-- /images/projects/ironman/featured-3.webp
-thumbnail: /images/projects/ironman/thumbnail.webp
+- mobile-app
+- visual-direction
+coverShape: tall
+thumbnail: /images/projects/ironman/cover.webp
 header:
   background: '#c8102e'
   backgroundTo: ''

@@ -1,19 +1,16 @@
 title: Ask Angel
 published: true
 category: digital-mark
-order: 50
+order: 60
 year: '2025'
 tagline: Going to say something right here, yeehaaw. Testing this two liner, brace yourself.
-client: Ask Angel
-summary: A friendly wellbeing companion with a mascot to match.
+client: Health & tracking
+indexTitle: ''
 services:
-- product-design
-featured: true
-featuredImages:
-- /images/projects/ask-angel/featured-1.webp
-- /images/projects/ask-angel/featured-2.webp
-- /images/projects/ask-angel/featured-3.webp
-thumbnail: /images/projects/ask-angel/thumbnail.webp
+- branding
+- mobile-app
+coverShape: wide
+thumbnail: /images/projects/ask-angel/cover.webp
 header:
   background: '#ffd5a6'
   backgroundTo: '#f2ab5b'

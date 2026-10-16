@@ -1,19 +1,16 @@
 title: NHL Gamezone
 published: true
 category: digital-mark
-order: 60
+order: 20
 year: '2026'
 tagline: Going to say something right here, yeehaaw. Testing this two liner, brace yourself.
-client: NHL
-summary: Predictions, streaks and rewards for NHL Gamezone.
+client: National Hockey League
+indexTitle: NHL
 services:
-- product-design
-featured: true
-featuredImages:
-- /images/projects/nhl-gamezone/featured-1.webp
-- /images/projects/nhl-gamezone/featured-2.webp
-- /images/projects/nhl-gamezone/featured-3.webp
-thumbnail: /images/projects/nhl-gamezone/thumbnail.webp
+- website
+- visual-direction
+coverShape: wide
+thumbnail: /images/projects/nhl-gamezone/cover.webp
 header:
   background: '#121111'
   backgroundTo: ''

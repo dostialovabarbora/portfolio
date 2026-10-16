@@ -27,13 +27,13 @@ const colour = (label: string, defaultValue: string) =>
   });
 
 export const SERVICES = [
-  { label: "branding", value: "branding" },
-  { label: "product design", value: "product-design" },
-  { label: "creative direction", value: "creative-direction" },
-  { label: "motion", value: "motion" },
-  { label: "web", value: "web" },
-  { label: "illustration", value: "illustration" },
-  { label: "design consultancy", value: "design-consultancy" },
+  { label: "Branding", value: "branding" },
+  { label: "Mobile App", value: "mobile-app" },
+  { label: "Website", value: "website" },
+  { label: "Visual Direction", value: "visual-direction" },
+  { label: "Product Design", value: "product-design" },
+  { label: "Motion", value: "motion" },
+  { label: "Illustration", value: "illustration" },
 ];
 
 export default config({
@@ -42,11 +42,24 @@ export default config({
     brand: { name: "Barb · Portfolio" },
     navigation: {
       Work: ["projects"],
-      Pages: ["about", "site"],
+      Pages: ["home", "about", "site"],
     },
   },
 
   singletons: {
+    home: singleton({
+      label: "Homepage",
+      path: "content/home",
+      format: { data: "yaml" },
+      schema: {
+        intro: fields.text({ label: "Intro statement", multiline: true }),
+        manifesto: fields.text({
+          label: "Red manifesto",
+          description: "The hand-drawn circle, arrows and underline are placed for the current wording",
+          multiline: true,
+        }),
+      },
+    }),
     site: singleton({
       label: "Site settings",
       path: "content/site",
@@ -156,29 +169,27 @@ export default config({
         order: fields.integer({ label: "Order (lower = first)", defaultValue: 10 }),
         year: fields.text({ label: "Year", defaultValue: "2026" }),
         tagline: fields.text({ label: "Header tagline", multiline: true }),
-        client: fields.text({ label: "Client" }),
-        summary: fields.text({
-          label: "Index summary",
-          description: "One line shown in the featured showcase on the homepage",
-          multiline: true,
+        client: fields.text({ label: "Client", description: "Shown in the lines view, e.g. National Hockey League" }),
+        indexTitle: fields.text({
+          label: "Short name on the homepage",
+          description: "Optional, e.g. NHL instead of NHL Gamezone",
         }),
         services: fields.multiselect({
-          label: "Services",
-          description: "Tags on the index; also used by the filter",
+          label: "Labels",
+          description: "Shown next to the project on the homepage",
           options: SERVICES,
-          defaultValue: ["product-design"],
+          defaultValue: ["mobile-app"],
         }),
-        featured: fields.checkbox({
-          label: "Featured",
-          description: "Show in the big showcase at the top of the homepage",
-          defaultValue: false,
+        coverShape: fields.select({
+          label: "Cover shape",
+          options: [
+            { label: "Tall (507 × 660)", value: "tall" },
+            { label: "Square (507 × 507)", value: "square" },
+            { label: "Wide (507 × 380)", value: "wide" },
+          ],
+          defaultValue: "square",
         }),
-        featuredImages: fields.array(image("Image", "projects"), {
-          label: "Featured stack (up to 3 images)",
-          description: "First image sits on top of the stack",
-          validation: { length: { max: 3 } },
-        }),
-        thumbnail: image("Thumbnail (index grid & list hover)", "projects"),
+        thumbnail: image("Cover (homepage covers & lines hover)", "projects"),
         header: fields.object(
           {
             background: colour("Background", "#e43c36"),
