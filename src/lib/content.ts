@@ -1,5 +1,8 @@
 import "server-only";
 import { createReader } from "@keystatic/core/reader";
+import { readFileSync } from "node:fs";
+import path from "node:path";
+import { imageSize } from "image-size";
 import config, { SERVICES } from "../../keystatic.config";
 
 export const reader = createReader(process.cwd(), config);
@@ -61,7 +64,7 @@ export async function getHome() {
   return (await reader.singletons.home.read()) ?? { intro: "", introHighlights: [], manifesto: "" };
 }
 
-export type Piece = { slug: string; title: string; image: string; alt: string; background: string };
+export type Piece = { slug: string; title: string; image: string; alt: string; background: string; width: number; height: number };
 
 /** Imagination canvas pieces, in CMS order. */
 export async function getPieces(): Promise<Piece[]> {
@@ -69,11 +72,15 @@ export async function getPieces(): Promise<Piece[]> {
   return all
     .filter((p) => p.entry.published && p.entry.image)
     .sort((a, b) => (a.entry.order ?? 0) - (b.entry.order ?? 0))
-    .map(({ slug, entry }) => ({
-      slug,
-      title: entry.title,
-      image: entry.image as string,
-      alt: entry.alt,
-      background: entry.background || "#000000",
-    }));
+    .map(({ slug, entry }) => {
+      const image = entry.image as string;
+      let width = 1600;
+      let height = 1200;
+      try {
+        const dim = imageSize(readFileSync(path.join(process.cwd(), "public", image)));
+        width = dim.width ?? width;
+        height = dim.height ?? height;
+      } catch {}
+      return { slug, title: entry.title, image, alt: entry.alt, background: entry.background || "#000000", width, height };
+    });
 }

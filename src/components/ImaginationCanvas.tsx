@@ -6,7 +6,6 @@ import {
   motion,
   useMotionValue,
   useReducedMotion,
-  useTransform,
   type AnimationPlaybackControls,
 } from "motion/react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
@@ -14,8 +13,8 @@ import type { Piece } from "@/lib/content";
 
 /**
  * Spots from the Figma "Imagination" frame (535:14, 1920 × 1405). Pieces fill
- * them in CMS order; every 7 pieces start a new block, and the whole set of
- * blocks repeats forever in every direction.
+ * them in CMS order; every 7 pieces add a new block next to / below the last,
+ * so the canvas grows with the collection. Each picture appears once.
  */
 const TILE = { w: 1920, h: 1405 };
 const SPOTS = [
@@ -27,32 +26,22 @@ const SPOTS = [
   { x: 748, y: 732, w: 425, h: 574 },
   { x: 1313, y: 657, w: 236, h: 236 },
 ];
+const EASE = [0.65, 0, 0.35, 1] as const;
 
 type Placed = Piece & { x: number; y: number; w: number; h: number; index: number };
 
 function layout(pieces: Piece[]) {
   const blocks = Math.max(1, Math.ceil(pieces.length / SPOTS.length));
   const cols = Math.ceil(Math.sqrt(blocks));
-  const rows = Math.ceil(blocks / cols);
   const placed: Placed[] = pieces.map((p, i) => {
     const b = Math.floor(i / SPOTS.length);
     const s = SPOTS[i % SPOTS.length];
     return { ...p, index: i, x: s.x + (b % cols) * TILE.w, y: s.y + Math.floor(b / cols) * TILE.h, w: s.w, h: s.h };
   });
-  return { placed, width: cols * TILE.w, height: rows * TILE.h };
-}
-
-const wrap = (v: number, size: number) => ((v % size) + size) % size;
-
-function useScale() {
-  const [scale, setScale] = useState(1);
-  useEffect(() => {
-    const update = () => setScale(Math.min(1, Math.max(0.5, window.innerWidth / 1728)));
-    update();
-    window.addEventListener("resize", update);
-    return () => window.removeEventListener("resize", update);
-  }, []);
-  return scale;
+  // Canvas ends 80px (Figma margin) past the right-most / lowest picture + caption.
+  const width = Math.max(TILE.w, ...placed.map((p) => p.x + p.w + 80));
+  const height = Math.max(...placed.map((p) => p.y + p.h + 20 + 80), 0);
+  return { placed, width, height };
 }
 
 function useViewport() {
@@ -66,31 +55,47 @@ function useViewport() {
   return vp;
 }
 
+/** Rubber-band past the edges, like a native scroll view. */
+const rubber = (v: number, min: number, max: number) => {
+  if (v > max) return max + (v - max) * 0.35;
+  if (v < min) return min + (v - min) * 0.35;
+  return v;
+};
+
 export function ImaginationCanvas({ pieces }: { pieces: Piece[] }) {
   const reduce = useReducedMotion();
-  const scale = useScale();
   const vp = useViewport();
+  const scale = Math.min(1, Math.max(0.5, vp.w / 1728));
   const { placed, width, height } = useMemo(() => layout(pieces), [pieces]);
   const W = width * scale;
   const H = height * scale;
+  const top = vp.w < 768 ? 70 : 0; // phones: two-row nav
 
-  // Pan position (unbounded) → wrapped offset of the repeating grid.
+  // Pan limits — if the canvas is narrower/shorter than the screen it stays centred.
+  const bounds = useMemo(() => {
+    const bx = W <= vp.w ? { min: (vp.w - W) / 2, max: (vp.w - W) / 2 } : { min: vp.w - W, max: 0 };
+    const by = H + top <= vp.h ? { min: top, max: top } : { min: vp.h - H, max: top };
+    return { x: bx, y: by };
+  }, [W, H, vp, top]);
+
   const x = useMotionValue(0);
   const y = useMotionValue(0);
-  const gx = useTransform(x, (v) => wrap(v, W) - W);
-  const gy = useTransform(y, (v) => wrap(v, H) - H);
-
-  const copiesX = Math.ceil(vp.w / W) + 1;
-  const copiesY = Math.ceil(vp.h / H) + 1;
-
-  const [open, setOpen] = useState<{ piece: Placed; rect: DOMRect } | null>(null);
-  const [dragging, setDragging] = useState(false);
-  const moved = useRef(false);
   const glide = useRef<AnimationPlaybackControls[]>([]);
   const stop = () => {
     glide.current.forEach((a) => a.stop());
     glide.current = [];
   };
+
+  // Keep the canvas inside its bounds when the window changes.
+  useEffect(() => {
+    x.set(Math.min(bounds.x.max, Math.max(bounds.x.min, x.get())));
+    y.set(Math.min(bounds.y.max, Math.max(bounds.y.min, y.get() || bounds.y.max)));
+  }, [bounds, x, y]);
+
+  const [open, setOpen] = useState<{ piece: Placed; rect: DOMRect } | null>(null);
+  const [dragging, setDragging] = useState(false);
+  const [hiddenSlug, setHiddenSlug] = useState<string | null>(null);
+  const moved = useRef(false);
 
   /* ---- drag with momentum ---- */
   const drag = useRef<{ px: number; py: number; t: number; vx: number; vy: number; id: number } | null>(null);
@@ -118,24 +123,35 @@ export function ImaginationCanvas({ pieces }: { pieces: Piece[] }) {
     d.px = e.clientX;
     d.py = e.clientY;
     d.t = now;
-    x.set(x.get() + dx);
-    y.set(y.get() + dy);
+    // Resist when pulled past an edge.
+    const rx = x.get() > bounds.x.max || x.get() < bounds.x.min ? 0.35 : 1;
+    const ry = y.get() > bounds.y.max || y.get() < bounds.y.min ? 0.35 : 1;
+    x.set(x.get() + dx * rx);
+    y.set(y.get() + dy * ry);
   };
-  const onPointerUp = (e: React.PointerEvent) => {
+  // Glide on with the release speed, then ease into a resting spot inside the bounds.
+  const settle = (vx: number, vy: number) => {
+    const to = (v: number, velocity: number, min: number, max: number) =>
+      Math.min(max, Math.max(min, v + (reduce ? 0 : velocity * 0.32)));
+    const opts = (velocity: number) =>
+      reduce ? { duration: 0.3, ease: EASE } : ({ type: "spring", velocity, stiffness: 90, damping: 22, mass: 1, restDelta: 0.5 } as const);
+    glide.current = [
+      animate(x, to(x.get(), vx, bounds.x.min, bounds.x.max), opts(vx)),
+      animate(y, to(y.get(), vy, bounds.y.min, bounds.y.max), opts(vy)),
+    ];
+  };
+  const onPointerUp = () => {
     const d = drag.current;
     drag.current = null;
     if (!d || !moved.current) return;
     setDragging(false);
-    if (reduce || performance.now() - d.t > 80) return;
-    glide.current = [
-      animate(x, x.get(), { type: "inertia", velocity: d.vx, power: 0.35, timeConstant: 420, restDelta: 0.5 }),
-      animate(y, y.get(), { type: "inertia", velocity: d.vy, power: 0.35, timeConstant: 420, restDelta: 0.5 }),
-    ];
-    void e;
+    const fresh = performance.now() - d.t < 80;
+    settle(fresh ? d.vx : 0, fresh ? d.vy : 0);
   };
 
   /* ---- trackpad / wheel and keyboard pan ---- */
   const root = useRef<HTMLDivElement>(null);
+  const settleTimer = useRef<number | undefined>(undefined);
   useEffect(() => {
     const el = root.current;
     if (!el) return;
@@ -144,20 +160,26 @@ export function ImaginationCanvas({ pieces }: { pieces: Piece[] }) {
       e.preventDefault();
       stop();
       const k = e.deltaMode === 1 ? 32 : 1;
-      x.set(x.get() - (e.shiftKey ? e.deltaY : e.deltaX) * k);
-      y.set(y.get() - (e.shiftKey ? 0 : e.deltaY) * k);
+      const dx = (e.shiftKey ? e.deltaY : e.deltaX) * k;
+      const dy = (e.shiftKey ? 0 : e.deltaY) * k;
+      x.set(rubber(x.get() - dx, bounds.x.min - 60, bounds.x.max + 60));
+      y.set(rubber(y.get() - dy, bounds.y.min - 60, bounds.y.max + 60));
+      window.clearTimeout(settleTimer.current);
+      settleTimer.current = window.setTimeout(() => settle(0, 0), 120);
     };
     el.addEventListener("wheel", onWheel, { passive: false });
     return () => el.removeEventListener("wheel", onWheel);
-  }, [open, x, y]);
+  });
 
   const nudge = useCallback(
     (dx: number, dy: number) => {
       stop();
-      const opts = reduce ? { duration: 0 } : { duration: 0.6, ease: [0.65, 0, 0.35, 1] as const };
-      glide.current = [animate(x, x.get() + dx, opts), animate(y, y.get() + dy, opts)];
+      const clampX = Math.min(bounds.x.max, Math.max(bounds.x.min, x.get() + dx));
+      const clampY = Math.min(bounds.y.max, Math.max(bounds.y.min, y.get() + dy));
+      const opts = reduce ? { duration: 0 } : { duration: 0.6, ease: EASE };
+      glide.current = [animate(x, clampX, opts), animate(y, clampY, opts)];
     },
-    [reduce, x, y]
+    [bounds, reduce, x, y]
   );
 
   /* ---- detail ---- */
@@ -165,8 +187,12 @@ export function ImaginationCanvas({ pieces }: { pieces: Piece[] }) {
     (dir: 1 | -1) =>
       setOpen((o) => {
         if (!o) return o;
-        const next = placed[(o.piece.index + dir + placed.length) % placed.length];
-        return { piece: next, rect: o.rect };
+        const piece = placed[(o.piece.index + dir + placed.length) % placed.length];
+        // Close back into wherever that picture sits on the canvas.
+        const el = document.querySelector<HTMLElement>(`[data-piece="${piece.slug}"]`);
+        const rect = el ? el.getBoundingClientRect() : o.rect;
+        setHiddenSlug(piece.slug);
+        return { piece, rect };
       }),
     [placed]
   );
@@ -189,20 +215,12 @@ export function ImaginationCanvas({ pieces }: { pieces: Piece[] }) {
     return () => window.removeEventListener("keydown", onKey);
   }, [open, go, nudge]);
 
-  // Phones: the nav takes two rows, so start the canvas a little lower.
-  useEffect(() => {
-    if (window.innerWidth < 768) y.set(70);
-  }, [y]);
-
   useEffect(() => {
     document.documentElement.style.overflow = "hidden";
     return () => {
       document.documentElement.style.overflow = "";
     };
   }, []);
-
-  const copies: { cx: number; cy: number }[] = [];
-  for (let cy = 0; cy <= copiesY; cy++) for (let cx = 0; cx <= copiesX; cx++) copies.push({ cx, cy });
 
   return (
     <>
@@ -217,33 +235,30 @@ export function ImaginationCanvas({ pieces }: { pieces: Piece[] }) {
         aria-label="Imagination canvas — drag or scroll to explore"
         role="region"
       >
-        <motion.div className="absolute left-0 top-0 will-change-transform" style={{ x: gx, y: gy }}>
-          {copies.map(({ cx, cy }) =>
-            placed.map((p) => (
-              <Tile
-                key={`${cx}-${cy}-${p.slug}`}
-                piece={p}
-                left={(cx * width + p.x) * scale}
-                top={(cy * height + p.y) * scale}
-                scale={scale}
-                eager={cx <= 1 && cy <= 1}
-                delay={reduce ? 0 : 0.05 + p.index * 0.06}
-                onOpen={(rect) => {
-                  if (moved.current) return;
-                  stop();
-                  setOpen({ piece: p, rect });
-                }}
-              />
-            ))
-          )}
+        <motion.div className="absolute left-0 top-0 will-change-transform" style={{ x, y, width: W, height: H }}>
+          {placed.map((p) => (
+            <Tile
+              key={p.slug}
+              piece={p}
+              scale={scale}
+              delay={reduce ? 0 : 0.05 + p.index * 0.06}
+              hidden={hiddenSlug === p.slug}
+              onOpen={(rect) => {
+                if (moved.current) return;
+                stop();
+                setHiddenSlug(p.slug);
+                setOpen({ piece: p, rect });
+              }}
+            />
+          ))}
         </motion.div>
       </div>
 
       {/* Keeps the nav readable while pictures slide underneath */}
-      <div aria-hidden className="pointer-events-none fixed inset-x-0 top-0 z-10 h-[170px] md:h-[clamp(120px,9vw,160px)] bg-gradient-to-b from-white from-40% to-white/0" />
+      <div aria-hidden className="pointer-events-none fixed inset-x-0 top-0 z-10 h-[170px] bg-gradient-to-b from-white from-40% to-white/0 md:h-[clamp(120px,9vw,160px)]" />
 
-      <AnimatePresence>
-        {open ? <Detail key="detail" piece={open.piece} from={open.rect} onClose={() => setOpen(null)} onStep={go} /> : null}
+      <AnimatePresence onExitComplete={() => setHiddenSlug(null)}>
+        {open ? <Detail key="detail" piece={open.piece} from={open.rect} vp={vp} onClose={() => setOpen(null)} onStep={go} /> : null}
       </AnimatePresence>
     </>
   );
@@ -251,44 +266,41 @@ export function ImaginationCanvas({ pieces }: { pieces: Piece[] }) {
 
 function Tile({
   piece,
-  left,
-  top,
   scale,
-  eager,
   delay,
+  hidden,
   onOpen,
 }: {
   piece: Placed;
-  left: number;
-  top: number;
   scale: number;
-  eager: boolean;
   delay: number;
+  hidden: boolean;
   onOpen: (rect: DOMRect) => void;
 }) {
   const frame = useRef<HTMLButtonElement>(null);
   return (
     <motion.figure
       className="absolute m-0"
-      style={{ left, top, width: piece.w * scale }}
+      style={{ left: piece.x * scale, top: piece.y * scale, width: piece.w * scale }}
       initial={{ opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay, ease: [0.22, 1, 0.36, 1] }}
     >
       <button
         ref={frame}
+        data-piece={piece.slug}
         type="button"
         aria-label={`Open ${piece.title}`}
         onClick={() => frame.current && onOpen(frame.current.getBoundingClientRect())}
         className="group relative block w-full cursor-[inherit] overflow-hidden bg-[#f2f2f2] outline-none focus-visible:ring-2 focus-visible:ring-ink"
-        style={{ height: piece.h * scale }}
+        style={{ height: piece.h * scale, opacity: hidden ? 0 : 1 }}
       >
         <Image
           src={piece.image}
           alt={piece.alt || piece.title}
           fill
           draggable={false}
-          loading={eager ? "eager" : "lazy"}
+          priority={piece.index < 7}
           sizes={`${Math.round(piece.w * scale * 2)}px`}
           className="pointer-events-none object-cover transition-transform duration-700 ease-[cubic-bezier(0.65,0,0.35,1)] group-hover:scale-[1.04]"
         />
@@ -298,29 +310,41 @@ function Tile({
   );
 }
 
+/** Fit the picture's own proportions inside the screen (Figma detail: 40px margin, 48px radius). */
+function fit(piece: Piece, vp: { w: number; h: number }) {
+  const inset = Math.min(40, Math.max(12, vp.w * 0.0231));
+  const maxW = vp.w - 2 * inset;
+  const maxH = vp.h - 2 * inset;
+  const s = Math.min(maxW / piece.width, maxH / piece.height);
+  const w = piece.width * s;
+  const h = piece.height * s;
+  return { left: (vp.w - w) / 2, top: (vp.h - h) / 2, width: w, height: h };
+}
+
 function Detail({
   piece,
   from,
+  vp,
   onClose,
   onStep,
 }: {
   piece: Placed;
   from: DOMRect;
+  vp: { w: number; h: number };
   onClose: () => void;
   onStep: (dir: 1 | -1) => void;
 }) {
   const reduce = useReducedMotion();
-  const ease = [0.65, 0, 0.35, 1] as const;
-  const vw = typeof window === "undefined" ? 1920 : window.innerWidth;
-  const vh = typeof window === "undefined" ? 1080 : window.innerHeight;
-  const inset = Math.min(40, Math.max(12, vw * 0.0231));
-  const radius = Math.min(48, Math.max(24, vw * 0.0278));
+  const target = fit(piece, vp);
+  const radius = Math.min(48, Math.max(20, vp.w * 0.0278));
+  const start = { top: from.top, left: from.left, width: from.width, height: from.height, borderRadius: 0 };
+
   return (
     <motion.div
       className="fixed inset-0 z-40 bg-sand"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      exit={{ opacity: 0, transition: { duration: 0.35, delay: 0.15 } }}
+      exit={{ opacity: 0, transition: { duration: 0.35, delay: 0.25 } }}
       transition={{ duration: 0.3 }}
       role="dialog"
       aria-modal="true"
@@ -330,45 +354,33 @@ function Detail({
       <motion.div
         className="fixed overflow-hidden"
         style={{ background: piece.background }}
-        initial={
-          reduce
-            ? { opacity: 0 }
-            : { top: from.top, left: from.left, width: from.width, height: from.height, borderRadius: 0 }
-        }
-        animate={{
-          opacity: 1,
-          top: inset,
-          left: inset,
-          width: vw - 2 * inset,
-          height: vh - 2 * inset,
-          borderRadius: radius,
-        }}
-        exit={
-          reduce
-            ? { opacity: 0 }
-            : { top: from.top, left: from.left, width: from.width, height: from.height, borderRadius: 0, opacity: 0 }
-        }
-        transition={{ duration: 0.7, ease }}
+        initial={reduce ? { opacity: 0, ...target, borderRadius: radius } : start}
+        animate={{ opacity: 1, ...target, borderRadius: radius }}
+        exit={reduce ? { opacity: 0 } : start}
+        transition={{ duration: 0.7, ease: EASE }}
         onClick={(e) => e.stopPropagation()}
       >
-        <AnimatePresence mode="popLayout" initial={false}>
+        <AnimatePresence initial={false}>
           <motion.div
             key={piece.slug}
             className="absolute inset-0"
-            initial={{ opacity: 0, scale: 1.03 }}
-            animate={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.5, ease }}
+            transition={{ duration: 0.45, ease: EASE }}
           >
-            <Image src={piece.image} alt={piece.alt || piece.title} fill sizes="100vw" className="object-contain" priority />
+            <Image src={piece.image} alt={piece.alt || piece.title} fill sizes="100vw" className="object-cover" priority />
           </motion.div>
         </AnimatePresence>
+
+        <button type="button" aria-label="Previous" onClick={() => onStep(-1)} className="absolute inset-y-0 left-0 w-1/3 cursor-w-resize" />
+        <button type="button" aria-label="Next" onClick={() => onStep(1)} className="absolute inset-y-0 right-0 w-1/3 cursor-e-resize" />
 
         <motion.button
           type="button"
           aria-label="Close"
           onClick={onClose}
-          className="absolute right-[clamp(16px,1.85vw,32px)] top-[clamp(16px,1.85vw,32px)] z-10 rounded-full"
+          className="absolute right-[clamp(12px,1.85vw,32px)] top-[clamp(12px,1.85vw,32px)] z-10 rounded-full"
           initial={{ opacity: 0, scale: 0.6 }}
           animate={{ opacity: 1, scale: 1, transition: { delay: 0.45, type: "spring", stiffness: 300, damping: 18 } }}
           exit={{ opacity: 0, scale: 0.6, transition: { duration: 0.15 } }}
@@ -378,9 +390,6 @@ function Detail({
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/brand/close.svg" alt="" width={44} height={44} className="block" />
         </motion.button>
-
-        <button type="button" aria-label="Previous" onClick={() => onStep(-1)} className="absolute inset-y-0 left-0 w-1/4 cursor-w-resize" />
-        <button type="button" aria-label="Next" onClick={() => onStep(1)} className="absolute inset-y-0 right-0 w-1/4 cursor-e-resize" />
       </motion.div>
     </motion.div>
   );
