@@ -52,7 +52,18 @@ export default config({
       path: "content/home",
       format: { data: "yaml" },
       schema: {
-        intro: fields.text({ label: "Intro statement", multiline: true }),
+        intro: fields.text({
+          label: "Intro statement",
+          description: "Each line break is a line on the site — the lines stay the same on every screen size",
+          multiline: true,
+        }),
+        introHighlights: fields.array(
+          fields.object({
+            text: fields.text({ label: "Words", description: "Exactly as written in the intro, e.g. Arnold Schwarzenegger" }),
+            image: image("Image shown on hover (landscape)", "home"),
+          }),
+          { label: "Intro hover images", itemLabel: (p) => p.fields.text.value || "Highlight" }
+        ),
         manifesto: fields.text({
           label: "Red manifesto",
           description: "The hand-drawn circle, arrows and underline are placed for the current wording",

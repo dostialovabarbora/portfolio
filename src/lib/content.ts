@@ -58,5 +58,5 @@ export async function getIndexItems(category?: Category): Promise<IndexItem[]> {
 }
 
 export async function getHome() {
-  return (await reader.singletons.home.read()) ?? { intro: "", manifesto: "" };
+  return (await reader.singletons.home.read()) ?? { intro: "", introHighlights: [], manifesto: "" };
 }

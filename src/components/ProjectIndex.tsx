@@ -88,10 +88,7 @@ function Cover({ item, index }: { item: IndexItem; index: number }) {
           ) : null}
         </div>
         <div className="mt-4 flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
-          <span className="relative font-display text-[clamp(22px,1.62vw,28px)] leading-[1.2] tracking-[-0.02em]">
-            {item.title}
-            <span className="absolute -bottom-0.5 left-0 h-px w-full origin-left scale-x-0 bg-ink transition-transform duration-500 ease-[var(--ease-out)] group-hover:scale-x-100" />
-          </span>
+          <span className="font-display text-[clamp(22px,1.62vw,28px)] leading-[1.2] tracking-[-0.02em]">{item.title}</span>
           <Labels items={item.services} />
         </div>
       </Link>

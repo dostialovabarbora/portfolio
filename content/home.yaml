@@ -1,4 +1,16 @@
-intro: Worked with Arnold Schwarzenegger, IRONMAN, NHL, MLS and +25 others. What are we going to build together?
+intro: |-
+  Worked with Arnold Schwarzenegger, IRONMAN,
+  NHL, MLS and +25 others. What are we going to
+  build together?
+introHighlights:
+  - text: Arnold Schwarzenegger
+    image: /images/home/arnold.webp
+  - text: IRONMAN
+    image: /images/home/ironman.webp
+  - text: NHL
+    image: /images/home/nhl.webp
+  - text: MLS
+    image: /images/home/mls.webp
 manifesto: 'I’m drawn to those who believe
 
   a little too much, dream a little too far, & carry ideas that feel almost impossible — because those are the visions
