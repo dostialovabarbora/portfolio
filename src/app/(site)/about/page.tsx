@@ -44,8 +44,8 @@ export default async function AboutPage() {
 
         {/* Services · Experience · Contact */}
         <section id="contact" className="scroll-mt-8 px-[var(--gutter)] pb-[clamp(56px,4.63vw,80px)] pt-[clamp(56px,4.63vw,80px)]">
-          <div className="grid gap-y-14 font-headline md:grid-cols-2 lg:grid-cols-[316fr_396fr_442fr_202fr] lg:gap-x-[clamp(24px,4.6vw,80px)]">
-            <Reveal>
+          <div className="grid gap-x-8 gap-y-14 font-headline md:grid-cols-2 lg:grid-cols-[396fr_528fr_442fr_202fr] lg:gap-x-0">
+            <Reveal className="lg:pr-4">
               <h2 className={heading}>Services</h2>
               <ul className="flex flex-col gap-6 text-[16px] leading-[1.2]">
                 {about.services.map((s) => (
@@ -55,13 +55,13 @@ export default async function AboutPage() {
             </Reveal>
             <Reveal delay={0.08}>
               <h2 className={heading}>Experience</h2>
-              <ul className="flex flex-col gap-6 lg:pr-[clamp(0px,7.6vw,132px)]">
+              <ul className="flex flex-col gap-6 lg:pr-[28%]">
                 {about.experience.map((e, i) => (
                   <ExperienceRow key={e.company} company={e.company} years={e.years} index={i} />
                 ))}
               </ul>
             </Reveal>
-            <Reveal delay={0.16}>
+            <Reveal delay={0.16} className="lg:pr-4">
               <h2 className={heading}>Contact</h2>
               <p className="text-[16px] leading-[1.2]">{about.contactText}</p>
               <ul className="mt-[clamp(32px,5.27vw,91px)] grid grid-cols-2 gap-x-5 gap-y-6 text-[16px] leading-[1.2]">
@@ -97,9 +97,9 @@ export default async function AboutPage() {
 function SocialLink({ label, url }: { label: string; url: string | null }) {
   return (
     <li>
-      <a href={url ?? "#"} target="_blank" rel="noreferrer" className="group inline-flex items-baseline gap-1">
-        <span>{label}</span>
-        <span className="font-light text-muted transition-transform duration-300 ease-[var(--ease-out)] group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-black">
+      <a href={url ?? "#"} target="_blank" rel="noreferrer" className="group">
+        {label}{" "}
+        <span className="inline-block font-light text-black/50 transition-[transform,color] duration-300 ease-[var(--ease-out)] group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-black">
           ↗
         </span>
       </a>

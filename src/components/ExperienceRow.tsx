@@ -3,11 +3,11 @@ import { motion } from "motion/react";
 
 export function ExperienceRow({ company, years, index }: { company: string; years: string; index: number }) {
   return (
-    <li className="group flex items-center gap-3 text-[16px] leading-[1.2]">
-      <span className="shrink-0 transition-transform duration-500 ease-[var(--ease-out)] group-hover:translate-x-1">{company}</span>
+    <li className="group flex items-center text-[16px] leading-[1.2]">
+      <span className="shrink-0 pr-7 transition-transform duration-500 ease-[var(--ease-out)] group-hover:translate-x-1">{company}</span>
       <motion.span
         aria-hidden
-        className="h-px flex-1 origin-left bg-black/25 transition-colors duration-300 group-hover:bg-black"
+        className="h-px flex-1 origin-left bg-black/[0.08] transition-colors duration-300 group-hover:bg-black/30"
         initial={{ scaleX: 0 }}
         whileInView={{ scaleX: 1 }}
         viewport={{ once: true }}

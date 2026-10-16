@@ -52,16 +52,16 @@ function Name({ text, image }: { text: string; image: string | null }) {
           <motion.span
             aria-hidden
             className="pointer-events-none absolute left-1/2 z-10 block"
-            style={{ x: sx, bottom: `calc(100% - ${u(14)})`, width: u(280), marginLeft: `calc(${u(280)} / -2)` }}
+            style={{ x: sx, bottom: `calc(100% - ${u(14)})`, width: u(180), marginLeft: `calc(${u(180)} / -2)` }}
           >
             <motion.span
-              className="relative block aspect-[280/180] overflow-hidden rounded-[clamp(8px,1.21cqw,16px)]"
+              className="relative block aspect-[3/2] overflow-hidden rounded-[clamp(8px,0.91cqw,12px)]"
               initial={reduce ? { opacity: 0 } : { opacity: 0, scale: 0.8, y: 16, rotate: -10 }}
               animate={{ opacity: 1, scale: 1, y: 0, rotate: -4 }}
               exit={reduce ? { opacity: 0 } : { opacity: 0, scale: 0.9, y: 8, rotate: -6 }}
               transition={{ type: "spring", stiffness: 320, damping: 24 }}
             >
-              <Image src={image} alt="" fill sizes="280px" className="object-cover" />
+              <Image src={image} alt="" fill sizes="180px" className="object-cover" />
             </motion.span>
           </motion.span>
         ) : null}
