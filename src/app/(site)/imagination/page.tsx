@@ -1,17 +1,17 @@
-import { ProjectIndex } from "@/components/ProjectIndex";
+import { ImaginationCanvas } from "@/components/ImaginationCanvas";
 import { SiteNav } from "@/components/SiteNav";
-import { getIndexItems } from "@/lib/content";
+import { getPieces } from "@/lib/content";
 
 export const metadata = { title: "Imagination" };
 
 export default async function Imagination() {
-  const items = await getIndexItems("imagination");
+  const pieces = await getPieces();
   return (
     <>
       <SiteNav />
-      <main className="pt-[clamp(40px,6vw,104px)]">
+      <main>
         <h1 className="sr-only">Imagination</h1>
-        <ProjectIndex items={items} />
+        <ImaginationCanvas pieces={pieces} />
       </main>
     </>
   );

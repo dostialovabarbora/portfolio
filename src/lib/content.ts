@@ -60,3 +60,20 @@ export async function getIndexItems(category?: Category): Promise<IndexItem[]> {
 export async function getHome() {
   return (await reader.singletons.home.read()) ?? { intro: "", introHighlights: [], manifesto: "" };
 }
+
+export type Piece = { slug: string; title: string; image: string; alt: string; background: string };
+
+/** Imagination canvas pieces, in CMS order. */
+export async function getPieces(): Promise<Piece[]> {
+  const all = await reader.collections.imagination.all();
+  return all
+    .filter((p) => p.entry.published && p.entry.image)
+    .sort((a, b) => (a.entry.order ?? 0) - (b.entry.order ?? 0))
+    .map(({ slug, entry }) => ({
+      slug,
+      title: entry.title,
+      image: entry.image as string,
+      alt: entry.alt,
+      background: entry.background || "#000000",
+    }));
+}

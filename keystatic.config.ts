@@ -41,7 +41,7 @@ export default config({
   ui: {
     brand: { name: "Barb · Portfolio" },
     navigation: {
-      Work: ["projects"],
+      Work: ["projects", "imagination"],
       Pages: ["home", "about", "site"],
     },
   },
@@ -160,6 +160,25 @@ export default config({
   },
 
   collections: {
+    imagination: collection({
+      label: "Imagination canvas",
+      slugField: "title",
+      path: "content/imagination/*",
+      format: { data: "yaml" },
+      columns: ["title", "order"],
+      schema: {
+        title: fields.slug({ name: { label: "Label", description: "Shown under the picture, e.g. tyvole.png" } }),
+        published: fields.checkbox({ label: "Published", defaultValue: true }),
+        order: fields.integer({
+          label: "Order (lower = first)",
+          description: "Pieces fill the canvas spots from the Figma layout in this order",
+          defaultValue: 100,
+        }),
+        image: image("Image", "imagination"),
+        alt: fields.text({ label: "Alt text" }),
+        background: colour("Detail background", "#000000"),
+      },
+    }),
     projects: collection({
       label: "Projects",
       slugField: "title",
