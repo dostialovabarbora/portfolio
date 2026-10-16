@@ -100,7 +100,7 @@ function SocialLink({ label, url }: { label: string; url: string | null }) {
     <li>
       <a href={url ?? "#"} target="_blank" rel="noreferrer" className="group">
         {label}{" "}
-        <span className="inline-block font-light text-black/50 transition-[transform,color] duration-300 ease-[var(--ease-out)] group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-black">
+        <span className="link-arrow font-light">
           ↗
         </span>
       </a>
