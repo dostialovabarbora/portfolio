@@ -56,15 +56,16 @@ export default async function AboutPage() {
             <Reveal delay={0.08}>
               <h2 className={heading}>Experience</h2>
               <ul className="flex flex-col gap-6 lg:pr-[28%]">
-                {about.experience.map((e, i) => (
-                  <ExperienceRow key={e.company} company={e.company} years={e.years} index={i} />
+                {about.experience.map((e) => (
+                  <ExperienceRow key={e.company} company={e.company} years={e.years} />
                 ))}
               </ul>
             </Reveal>
             <Reveal delay={0.16} className="lg:pr-4">
               <h2 className={heading}>Contact</h2>
-              <p className="text-[16px] leading-[1.2]">{about.contactText}</p>
-              <ul className="mt-[clamp(32px,5.27vw,91px)] grid grid-cols-2 gap-x-5 gap-y-6 text-[16px] leading-[1.2]">
+              {/* Holds three rows so the links line up with rows 4–5 of Services / Experience */}
+              <p className="text-[16px] leading-[1.2] lg:min-h-[calc(3*1.2em+48px)]">{about.contactText}</p>
+              <ul className="mt-8 grid lg:mt-6 grid-cols-2 gap-x-5 gap-y-6 text-[16px] leading-[1.2]">
                 {about.socials.slice(0, 1).map((s) => (
                   <SocialLink key={s.label} {...s} />
                 ))}
