@@ -310,7 +310,7 @@ function Tile({
   );
 }
 
-/** Fit the picture's own proportions inside the screen (Figma detail: 40px margin, 48px radius). */
+/** Fit the picture's own proportions inside the screen (40px margin, square corners). */
 function fit(piece: Piece, vp: { w: number; h: number }) {
   const inset = Math.min(40, Math.max(12, vp.w * 0.0231));
   const maxW = vp.w - 2 * inset;
@@ -336,8 +336,7 @@ function Detail({
 }) {
   const reduce = useReducedMotion();
   const target = fit(piece, vp);
-  const radius = Math.min(48, Math.max(20, vp.w * 0.0278));
-  const start = { top: from.top, left: from.left, width: from.width, height: from.height, borderRadius: 0 };
+  const start = { top: from.top, left: from.left, width: from.width, height: from.height };
 
   return (
     <motion.div
@@ -354,8 +353,8 @@ function Detail({
       <motion.div
         className="fixed overflow-hidden"
         style={{ background: piece.background }}
-        initial={reduce ? { opacity: 0, ...target, borderRadius: radius } : start}
-        animate={{ opacity: 1, ...target, borderRadius: radius }}
+        initial={reduce ? { opacity: 0, ...target } : start}
+        animate={{ opacity: 1, ...target }}
         exit={reduce ? { opacity: 0 } : start}
         transition={{ duration: 0.7, ease: EASE }}
         onClick={(e) => e.stopPropagation()}
