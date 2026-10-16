@@ -121,6 +121,21 @@ a:focus-visible .link-arrow {
   color: #000;
 }
 
+/* Email underline: draws in from the left on hover, leaves to the right — same curve as the arrows */
+.link-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: 100% 100%;
+  background-size: 0% 1px;
+  padding-bottom: 2px;
+  transition: background-size 550ms cubic-bezier(0.65, 0, 0.35, 1);
+}
+.link-underline:hover,
+.link-underline:focus-visible {
+  background-position: 0% 100%;
+  background-size: 100% 1px;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

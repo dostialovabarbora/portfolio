@@ -71,7 +71,7 @@ export default async function AboutPage() {
                 ))}
                 {about.email ? (
                   <li>
-                    <a href={`mailto:${about.email}`} className="underline decoration-transparent underline-offset-4 transition-colors duration-300 hover:decoration-current">
+                    <a href={`mailto:${about.email}`} className="link-underline">
                       {about.email}
                     </a>
                   </li>
