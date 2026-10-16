@@ -104,6 +104,18 @@ body {
   text-transform: uppercase;
 }
 
+/* Project labels: radius 12 with 60% corner smoothing in Figma.
+   Browsers with corner-shape get the smoothed (squircle) corner; others a plain 12px radius. */
+.label-pill {
+  border-radius: clamp(9px, 0.69vw, 12px);
+}
+@supports (corner-shape: squircle) {
+  .label-pill {
+    border-radius: clamp(12px, 0.98vw, 17px);
+    corner-shape: superellipse(1.5);
+  }
+}
+
 /* ↗ next to external links: glides up-right with an ease-in-out curve */
 .link-arrow {
   display: inline-block;
