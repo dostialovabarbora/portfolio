@@ -122,6 +122,8 @@ export default config({
             }),
             offsetX: fields.integer({ label: "Distance from centre (px)", defaultValue: 140 }),
             top: fields.integer({ label: "Distance from top (px, at 1000px hero)", defaultValue: 200 }),
+            mobileX: fields.number({ label: "Phone: bubble across (%)", description: "0 = left edge of the video, 100 = right edge", defaultValue: 50 }),
+            mobileY: fields.number({ label: "Phone: bubble down (%)", description: "0 = top of the video, 100 = bottom", defaultValue: 50 }),
           }),
           { label: "Hero labels", itemLabel: (p) => p.fields.text.value }
         ),

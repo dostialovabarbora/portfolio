@@ -7,30 +7,40 @@ heroLabels:
     side: right
     offsetX: 131
     top: 162
+    mobileX: 70.7
+    mobileY: 15.4
   - text: |-
       ADHD DOPAMINE
       SEEKER
     side: left
     offsetX: 186
     top: 279
+    mobileX: 22.6
+    mobileY: 25.4
   - text: |-
       CHAOS, BUT MAKE IT
       STRUCTURED
     side: right
     offsetX: 190
     top: 408
+    mobileX: 81.2
+    mobileY: 44.9
   - text: |-
       UNSURE BUT FIGURING
       MOST OF THE SH*T ANYWAY
     side: left
     offsetX: 141
     top: 622
+    mobileX: 22.3
+    mobileY: 68.1
   - text: |-
       PROFESSIONALLY
       DISTRACTED
     side: right
     offsetX: 121
     top: 694
+    mobileX: 73.2
+    mobileY: 79.7
 intro:
   - >-
     I knew creativity was part of me long before I had the words for it. Design,
