@@ -69,7 +69,7 @@ export function ImaginationCanvas({ pieces }: { pieces: Piece[] }) {
   const { placed, width, height } = useMemo(() => layout(pieces), [pieces]);
   const W = width * scale;
   const H = height * scale;
-  const top = vp.w < 768 ? 70 : 0; // phones: two-row nav
+  const top = 0;
 
   // Pan limits — if the canvas is narrower/shorter than the screen it stays centred.
   const bounds = useMemo(() => {
@@ -255,7 +255,7 @@ export function ImaginationCanvas({ pieces }: { pieces: Piece[] }) {
       </div>
 
       {/* Keeps the nav readable while pictures slide underneath */}
-      <div aria-hidden className="pointer-events-none fixed inset-x-0 top-0 z-10 h-[170px] bg-gradient-to-b from-white from-40% to-white/0 md:h-[clamp(120px,9vw,160px)]" />
+      <div aria-hidden className="pointer-events-none fixed inset-x-0 top-0 z-10 h-[120px] bg-gradient-to-b from-white from-40% to-white/0 md:h-[clamp(120px,9vw,160px)]" />
 
       <AnimatePresence onExitComplete={() => setHiddenSlug(null)}>
         {open ? <Detail key="detail" piece={open.piece} from={open.rect} vp={vp} onClose={() => setOpen(null)} onStep={go} /> : null}

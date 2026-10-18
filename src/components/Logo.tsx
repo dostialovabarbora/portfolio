@@ -11,7 +11,7 @@ import { useState } from "react";
 const VARIANTS = ["/brand/logo-1.svg", "/brand/logo-nature.webp", "/brand/logo-balloon.webp"];
 const ease = [0.22, 1, 0.36, 1] as const;
 
-export function Logo() {
+export function Logo({ className = "h-[56px] w-[128px]" }: { className?: string }) {
   const [index, setIndex] = useState(0);
   const reduce = useReducedMotion();
   const next = () => setIndex((i) => (i + 1) % VARIANTS.length);
@@ -22,7 +22,7 @@ export function Logo() {
       aria-label="Barbora Dostálová — home"
       onMouseEnter={next}
       onFocus={next}
-      className="relative block h-[56px] w-[128px]"
+      className={`relative block ${className}`}
     >
       {/* Preload every variant so the first swap is instant */}
       {VARIANTS.map((src) => (
