@@ -1,69 +1,83 @@
 heroImage: /images/about/hero-poster.webp
+heroVideo: /media/about-hero.mp4
 heroLabels:
-- text: 'MILLENNIAL CORE,
-
-    GEN Z SIDE QUESTS'
-  side: right
-  offsetX: 131
-  top: 162
-- text: 'ADHD DOPAMINE
-
-    SEEKER'
-  side: left
-  offsetX: 186
-  top: 279
-- text: 'CHAOS, BUT MAKE IT
-
-    STRUCTURED'
-  side: right
-  offsetX: 190
-  top: 408
-- text: 'UNSURE BUT FIGURING
-
-    MOST OF THE SH*T ANYWAY'
-  side: left
-  offsetX: 141
-  top: 622
-- text: 'PROFESSIONALLY
-
-    DISTRACTED'
-  side: right
-  offsetX: 121
-  top: 694
+  - text: |-
+      MILLENNIAL CORE,
+      GEN Z SIDE QUESTS
+    side: right
+    offsetX: 131
+    top: 162
+  - text: |-
+      ADHD DOPAMINE
+      SEEKER
+    side: left
+    offsetX: 186
+    top: 279
+  - text: |-
+      CHAOS, BUT MAKE IT
+      STRUCTURED
+    side: right
+    offsetX: 190
+    top: 408
+  - text: |-
+      UNSURE BUT FIGURING
+      MOST OF THE SH*T ANYWAY
+    side: left
+    offsetX: 141
+    top: 622
+  - text: |-
+      PROFESSIONALLY
+      DISTRACTED
+    side: right
+    offsetX: 121
+    top: 694
 intro:
-- I knew creativity was part of me long before I had the words for it. Design, art, and curiosity always felt natural — less like a skill I picked up, more like a lens through which I see the world. For over 11 years, I’ve been turning ambitious ideas into brands, shaping digital products with purpose, and helping visions become something tangible, usable, and alive.
-- Now, when I’m not feeding my endurance sports addiction, I work as a freelance multidisciplinary designer and as a Senior Product Designer at STRV. I’ve led design phases for clients including Arnold Schwarzenegger, MLS, IRONMAN, NHL, and 25+ others. I’m drawn to strong ideas, sharp execution, AND work that has enough personality to leave a mark.
+  - >-
+    I knew creativity was part of me long before I had the words for it. Design,
+    art, and curiosity always felt natural — less like a skill I picked up, more
+    like a lens through which I see the world. For over 11 years, I’ve been
+    turning ambitious ideas into brands, shaping digital products with purpose,
+    and helping visions become something tangible, usable, and alive.
+  - >-
+    Now, when I’m not feeding my endurance sports addiction, I work as a
+    freelance multidisciplinary designer and as a Senior Product Designer at
+    STRV. I’ve led design phases for clients including Arnold Schwarzenegger,
+    MLS, IRONMAN, NHL, and 25+ others. I’m drawn to strong ideas, sharp
+    execution, AND work that has enough personality to leave a mark.
 gallery:
-- image: /images/about/gallery-1.webp
-  alt: Barbora in a fisheye shot at night
-  background: '#06090e'
-- image: /images/about/gallery-2-v2.webp
-  alt: Barbora in a white hooded jacket and yellow goggles
-  background: '#191516'
-  focus: bottom
+  - image: /images/about/gallery/0/image.png
+    alt: Barbora in a fisheye shot at night
+    background: '#06090e'
+    focus: center
+  - image: /images/about/gallery/1/image.png
+    alt: Barbora in a white hooded jacket and yellow goggles
+    background: '#191516'
+    focus: bottom
 services:
-- Creative & visual direction
-- Branding
-- Product design
-- Motion interaction
-- Design consultancy
+  - Creative & visual direction
+  - Branding
+  - Product design
+  - Motion interaction
+  - Design consultancy
 experience:
-- company: Freelance
-  years: 2015 – Now
-- company: STRV
-  years: 2021 – Now
-- company: OAK’S LAB
-  years: 2020 – 2021
-- company: Siegel+Gale
-  years: 2019 – 2020
-- company: Wunderman Thompson
-  years: 2017 – 2019
-contactText: If you'd like further details about my work approach, want to discuss a project or idea, please get in touch.
+  - company: Freelance
+    years: 2015 – Now
+  - company: STRV
+    years: 2021 – Now
+  - company: OAK’S LAB
+    years: 2020 – 2021
+  - company: Siegel+Gale
+    years: 2019 – 2020
+  - company: Wunderman Thompson
+    years: 2017 – 2019
+contactText: >-
+  If you'd like further details about my work approach, want to discuss a
+  project or idea, please get in touch.
 email: hello@bydostalova
 socials:
-- label: are.na
-  url: https://www.are.na/
-- label: instagram
-  url: https://www.instagram.com/
-- label: linkedin
-  url: https://www.linkedin.com/
+  - label: are.na
+    url: https://www.are.na/
+  - label: instagram
+    url: https://www.instagram.com/
+  - label: linkedin
+    url: https://www.linkedin.com/
