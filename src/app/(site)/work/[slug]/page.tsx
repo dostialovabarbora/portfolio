@@ -3,8 +3,8 @@ import { notFound } from "next/navigation";
 import { Blocks } from "@/components/Blocks";
 import { CaseHeader } from "@/components/CaseHeader";
 import { CloseButton } from "@/components/CloseButton";
-import { NextProject } from "@/components/NextProject";
-import { getProjects, reader } from "@/lib/content";
+import { OtherProjects } from "@/components/ProjectIndex";
+import { getIndexItems, getProjects, reader } from "@/lib/content";
 
 export async function generateStaticParams() {
   const projects = await getProjects();
@@ -22,9 +22,10 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   const project = await reader.collections.projects.read(slug);
   if (!project || !project.published) notFound();
 
-  const siblings = await getProjects(project.category);
-  const index = siblings.findIndex((p) => p.slug === slug);
-  const next = siblings[(index + 1) % siblings.length];
+  // The three projects that follow this one (wrapping round), never the one that's open.
+  const all = await getIndexItems(project.category);
+  const index = all.findIndex((p) => p.slug === slug);
+  const others = [...all.slice(index + 1), ...all.slice(0, Math.max(0, index))].filter((p) => p.slug !== slug).slice(0, 3);
   const back = project.category === "digital-mark" ? "/" : `/${project.category}`;
 
   return (
@@ -42,17 +43,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       <main>
         <Blocks blocks={project.blocks} />
       </main>
-      {next && next.slug !== slug ? (
-        <NextProject
-          href={`/work/${next.slug}`}
-          title={next.entry.title}
-          background={next.entry.header.background}
-          backgroundTo={next.entry.header.backgroundTo || undefined}
-          textColor={next.entry.header.textColor}
-        />
-      ) : (
-        <div className="h-[var(--gutter-case)]" />
-      )}
+      <OtherProjects items={others} />
     </div>
   );
 }

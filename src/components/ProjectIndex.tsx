@@ -66,7 +66,7 @@ function ViewButton({ label, active, onClick, children }: { label: string; activ
 }
 
 /* ---------- covers ---------- */
-function Cover({ item, index }: { item: IndexItem; index: number }) {
+function Cover({ item, index, shape }: { item: IndexItem; index: number; shape?: CoverShape }) {
   const reduce = useReducedMotion();
   return (
     <motion.li
@@ -76,7 +76,7 @@ function Cover({ item, index }: { item: IndexItem; index: number }) {
       transition={{ duration: 0.9, delay: (index % 3) * 0.08, ease }}
     >
       <Link href={`/work/${item.slug}`} className="group block">
-        <div className="relative overflow-hidden bg-sand" style={{ aspectRatio: SHAPE[item.coverShape] }}>
+        <div className="relative overflow-hidden bg-sand" style={{ aspectRatio: SHAPE[shape ?? item.coverShape] }}>
           {item.cover ? (
             <Image
               src={item.cover}
@@ -193,6 +193,31 @@ export function ProjectIndex({ items }: { items: IndexItem[] }) {
         </AnimatePresence>
         {!items.length ? <p className="py-20 text-center font-display text-muted">New work is on its way.</p> : null}
       </div>
+    </section>
+  );
+}
+
+/* ---------- "Check out other projects" (Figma 1390:45569) ---------- */
+/** Always large → small → medium from left to right, whatever each project's own cover shape is. */
+const OTHER_SHAPES: CoverShape[] = ["tall", "wide", "square"];
+
+export function OtherProjects({ items }: { items: IndexItem[] }) {
+  if (!items.length) return null;
+  return (
+    <section className="px-[var(--gutter)] pb-[var(--gutter)] pt-[clamp(96px,9.26vw,160px)]" aria-labelledby="other-projects">
+      <h2
+        id="other-projects"
+        className="text-center font-headline text-[clamp(32px,2.78vw,48px)] font-medium uppercase leading-[0.9]"
+      >
+        Check out
+        <br />
+        other projects
+      </h2>
+      <ul className="mt-[clamp(40px,4.63vw,80px)] grid items-start gap-x-[clamp(12px,1.39vw,24px)] gap-y-[clamp(40px,4.63vw,80px)] sm:grid-cols-2 lg:grid-cols-3">
+        {items.slice(0, 3).map((item, i) => (
+          <Cover key={item.slug} item={item} index={i} shape={OTHER_SHAPES[i]} />
+        ))}
+      </ul>
     </section>
   );
 }
