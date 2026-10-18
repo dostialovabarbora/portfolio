@@ -148,6 +148,20 @@ a:focus-visible .link-arrow {
   background-size: 100% 1px;
 }
 
+/* About hero labels: quick RGB-split jitter while the letters scramble */
+.label-glitch {
+  animation: label-glitch 520ms steps(1, end);
+}
+@keyframes label-glitch {
+  0% { text-shadow: 2px 0 #ff0f0f, -2px 0 #2b5cff; transform: translate(1px, 0); }
+  15% { text-shadow: -2px 0 #ff0f0f, 2px 0 #2b5cff; transform: translate(-2px, 1px); }
+  30% { text-shadow: 3px 0 #ff0f0f, -1px 0 #2b5cff; transform: translate(1px, -1px); clip-path: inset(10% 0 40% 0); }
+  45% { text-shadow: -1px 0 #ff0f0f, 2px 0 #2b5cff; transform: translate(0, 0); clip-path: none; }
+  60% { text-shadow: 1px 0 #ff0f0f, -1px 0 #2b5cff; transform: translate(-1px, 0); clip-path: inset(50% 0 0 0); }
+  75% { text-shadow: 1px 0 #ff0f0f, -1px 0 #2b5cff; transform: translate(1px, 0); clip-path: none; }
+  100% { text-shadow: none; transform: none; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

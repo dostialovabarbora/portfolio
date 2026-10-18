@@ -10,7 +10,7 @@ import { getHome, reader } from "@/lib/content";
 
 export const metadata: Metadata = { title: "About" };
 
-const heading = "mb-6 text-[18px] leading-none text-muted";
+const heading = "mb-6 text-[17px] leading-none text-muted";
 
 export default async function AboutPage() {
   const [about, home] = await Promise.all([reader.singletons.about.read(), getHome()]);
@@ -47,7 +47,7 @@ export default async function AboutPage() {
           <div className="grid gap-x-8 gap-y-14 font-headline md:grid-cols-2 lg:grid-cols-[396fr_528fr_442fr_202fr] lg:gap-x-0">
             <Reveal className="lg:pr-4">
               <h2 className={heading}>Services</h2>
-              <ul className="flex flex-col gap-6 text-[16px] leading-[1.2]">
+              <ul className="flex flex-col gap-6 text-[15px] leading-[1.2]">
                 {about.services.map((s) => (
                   <li key={s}>{s}</li>
                 ))}
@@ -64,8 +64,8 @@ export default async function AboutPage() {
             <Reveal delay={0.16} className="lg:pr-4">
               <h2 className={heading}>Contact</h2>
               {/* Holds three rows so the links line up with rows 4–5 of Services / Experience */}
-              <p className="text-[16px] leading-[1.2] lg:min-h-[calc(3*1.2em+48px)]">{about.contactText}</p>
-              <ul className="mt-8 grid lg:mt-6 grid-cols-2 gap-x-5 gap-y-6 text-[16px] leading-[1.2]">
+              <p className="text-[15px] leading-[1.2] lg:min-h-[calc(3*1.2em+48px)]">{about.contactText}</p>
+              <ul className="mt-8 grid lg:mt-6 grid-cols-2 gap-x-5 gap-y-6 text-[15px] leading-[1.2]">
                 {about.socials.slice(0, 1).map((s) => (
                   <SocialLink key={s.label} {...s} />
                 ))}
