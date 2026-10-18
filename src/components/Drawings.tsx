@@ -31,7 +31,10 @@ function Drawing({
     <svg viewBox={viewBox} fill="none" aria-hidden className={className} style={style}>
       {strokes.map((s, i) => {
         const anim = { pathLength: 1, opacity: 1 };
-        const transition = { pathLength: { duration: each, delay: delay + i * each * 0.9, ease: [0.16, 1, 0.3, 1] as const }, opacity: { duration: 0.01, delay: delay + i * each * 0.9 } };
+        // Reduced motion: same start state as the server render (so hydration matches), but appear instantly.
+        const transition = reduce
+          ? { duration: 0 }
+          : { pathLength: { duration: each, delay: delay + i * each * 0.9, ease: [0.16, 1, 0.3, 1] as const }, opacity: { duration: 0.01, delay: delay + i * each * 0.9 } };
         return (
           <motion.path
             key={i}
@@ -40,9 +43,9 @@ function Drawing({
             strokeWidth={s.w}
             strokeLinecap="round"
             strokeLinejoin="round"
-            initial={reduce ? false : { pathLength: 0, opacity: 0 }}
+            initial={{ pathLength: 0, opacity: 0 }}
             {...(trigger === "view"
-              ? { whileInView: anim, viewport: { once: true, margin: "0px 0px -15% 0px" } }
+              ? { whileInView: anim, viewport: { once: true, amount: 0, margin: "0px 0px -10% 0px" } }
               : { animate: anim })}
             transition={transition}
           />
