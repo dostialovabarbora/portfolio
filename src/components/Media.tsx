@@ -11,6 +11,7 @@ export function MediaTile({
   rounded = true,
   aspect,
   sizes,
+  position = "center",
 }: {
   src: string;
   alt: string;
@@ -19,6 +20,8 @@ export function MediaTile({
   rounded?: boolean;
   aspect: string;
   sizes: string;
+  /** Which part of the picture stays visible when it's cropped. */
+  position?: "top" | "center" | "bottom";
 }) {
   const reduce = useReducedMotion();
   return (
@@ -37,7 +40,14 @@ export function MediaTile({
         viewport={{ once: true, margin: "0px 0px -10% 0px" }}
         transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1] }}
       >
-        <Image src={src} alt={alt} fill sizes={sizes} className={fit === "contain" ? "object-contain" : "object-cover"} />
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          sizes={sizes}
+          className={fit === "contain" ? "object-contain" : "object-cover"}
+          style={{ objectPosition: `50% ${position === "top" ? "0%" : position === "bottom" ? "100%" : "50%"}` }}
+        />
       </motion.div>
     </motion.div>
   );

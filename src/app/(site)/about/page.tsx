@@ -4,16 +4,16 @@ import { ExperienceRow } from "@/components/ExperienceRow";
 import { MediaTile } from "@/components/Media";
 import { Reveal } from "@/components/Reveal";
 import { SiteNav } from "@/components/SiteNav";
-import { Statement } from "@/components/Statement";
+import { Manifesto } from "@/components/Manifesto";
 import { Sun } from "@/components/Sun";
-import { reader } from "@/lib/content";
+import { getHome, reader } from "@/lib/content";
 
 export const metadata: Metadata = { title: "About" };
 
 const heading = "mb-6 text-[18px] leading-none text-muted";
 
 export default async function AboutPage() {
-  const about = await reader.singletons.about.read();
+  const [about, home] = await Promise.all([reader.singletons.about.read(), getHome()]);
   if (!about) return null;
 
   return (
@@ -23,7 +23,7 @@ export default async function AboutPage() {
         <AboutHero image={about.heroImage} video={about.heroVideo} labels={about.heroLabels} />
 
         {/* Intro — two red Monorama columns */}
-        <section className="px-[var(--gutter)] py-[clamp(72px,13.1vw,227px)]">
+        <section className="px-[var(--gutter)] py-[clamp(96px,17.77vw,307px)]">
           <div className="mx-auto grid max-w-[1568px] gap-y-10 md:grid-cols-2">
             {about.intro.map((text, i) => (
               <Reveal key={i} delay={i * 0.12} className="flex justify-center md:px-8">
@@ -37,13 +37,13 @@ export default async function AboutPage() {
         <section className="grid gap-[clamp(10px,1.16vw,20px)] px-[var(--gutter)] md:grid-cols-2">
           {about.gallery.map((tile, i) =>
             tile.image ? (
-              <MediaTile key={i} src={tile.image} alt={tile.alt} background={tile.background} aspect="1 / 1" sizes="(max-width: 768px) 100vw, 46vw" />
+              <MediaTile key={i} src={tile.image} alt={tile.alt} background={tile.background} position={tile.focus} aspect="1 / 1" sizes="(max-width: 768px) 100vw, 46vw" />
             ) : null
           )}
         </section>
 
         {/* Services · Experience · Contact */}
-        <section id="contact" className="scroll-mt-8 px-[var(--gutter)] pb-[clamp(64px,9.26vw,160px)] pt-[clamp(64px,6.94vw,120px)]">
+        <section id="contact" className="scroll-mt-8 px-[var(--gutter)] pb-[clamp(64px,9.26vw,160px)] pt-[clamp(80px,11.57vw,200px)]">
           <div className="grid gap-x-8 gap-y-14 font-headline md:grid-cols-2 lg:grid-cols-[396fr_528fr_442fr_202fr] lg:gap-x-0">
             <Reveal className="lg:pr-4">
               <h2 className={heading}>Services</h2>
@@ -89,7 +89,7 @@ export default async function AboutPage() {
 
         <div className="mx-[var(--gutter)] mb-[clamp(80px,9.26vw,160px)] h-px bg-black/15" />
 
-        <Statement text={about.statement} />
+        <Manifesto text={home.manifesto} />
       </main>
     </>
   );

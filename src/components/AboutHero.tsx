@@ -36,15 +36,15 @@ export function AboutHero({ image, video, labels }: { image?: string | null; vid
       <div className="relative h-[clamp(520px,57.87vw,1000px)] overflow-hidden rounded-[var(--radius-lg)]">
         <motion.div
           style={{ x: px }}
-          className="absolute bottom-[8.8%] left-[calc(50%-11px)] top-[8.8%] aspect-[2670/4000] -translate-x-1/2"
+          className="absolute bottom-[8.8%] left-1/2 top-[8.8%] aspect-[550/824] -translate-x-1/2 overflow-hidden"
           initial={reduce ? false : { opacity: 0, y: 40, filter: "blur(8px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: 1.2, ease }}
         >
           {video ? (
-            <video className="h-full w-full object-contain" src={video} poster={image ?? undefined} autoPlay muted loop playsInline />
+            <video className="h-full w-full object-cover" src={video} poster={image ?? undefined} autoPlay muted loop playsInline />
           ) : image ? (
-            <Image src={image} alt="Barbora Dostálová" fill priority sizes="(max-width: 768px) 60vw, 560px" className="object-contain" />
+            <Image src={image} alt="Barbora Dostálová" fill priority sizes="(max-width: 768px) 60vw, 560px" className="object-cover" />
           ) : null}
         </motion.div>
 

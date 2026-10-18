@@ -1,29 +1,35 @@
-heroImage: /images/about/hero.webp
+heroImage: /images/about/hero-poster.webp
 heroLabels:
-- text: 'MIXTURE OF CORE MILLENNIAL
+- text: 'MILLENNIAL CORE,
 
-    & UPRISING GEN-Z'
+    GEN Z SIDE QUESTS'
   side: right
-  offsetX: 116
-  top: 142
+  offsetX: 131
+  top: 162
 - text: 'ADHD DOPAMINE
 
     SEEKER'
   side: left
-  offsetX: 166
+  offsetX: 186
   top: 279
-- text: 'CHAOTIC ORDER
+- text: 'CHAOS, BUT MAKE IT
 
-    PERSONALITY CHECK'
+    STRUCTURED'
   side: right
-  offsetX: 158
-  top: 410
+  offsetX: 190
+  top: 408
 - text: 'UNSURE BUT FIGURING
 
     MOST OF THE SH*T ANYWAY'
   side: left
-  offsetX: 136
+  offsetX: 141
   top: 622
+- text: 'PROFESSIONALLY
+
+    DISTRACTED'
+  side: right
+  offsetX: 121
+  top: 694
 intro:
 - I knew creativity was part of me long before I had the words for it. Design, art, and curiosity always felt natural — less like a skill I picked up, more like a lens through which I see the world. For over 11 years, I’ve been turning ambitious ideas into brands, shaping digital products with purpose, and helping visions become something tangible, usable, and alive.
 - Now, when I’m not feeding my endurance sports addiction, I work as a freelance multidisciplinary designer and as a Senior Product Designer at STRV. I’ve led design phases for clients including Arnold Schwarzenegger, MLS, IRONMAN, NHL, and 25+ others. I’m drawn to strong ideas, sharp execution, AND work that has enough personality to leave a mark.
@@ -31,9 +37,10 @@ gallery:
 - image: /images/about/gallery-1.webp
   alt: Barbora in a fisheye shot at night
   background: '#06090e'
-- image: /images/about/gallery-2.webp
-  alt: Running at dusk
+- image: /images/about/gallery-2-v2.webp
+  alt: Barbora in a white hooded jacket and yellow goggles
   background: '#191516'
+  focus: bottom
 services:
 - Creative & visual direction
 - Branding
@@ -60,4 +67,3 @@ socials:
   url: https://www.instagram.com/
 - label: linkedin
   url: https://www.linkedin.com/
-statement: Endurance, health and fitness are not just sport related topics for me. They are shaping me as a human being — as a designer.

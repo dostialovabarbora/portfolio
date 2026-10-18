@@ -100,9 +100,10 @@ export default config({
       path: "content/about",
       format: { data: "yaml" },
       schema: {
-        heroImage: image("Hero portrait (transparent PNG)", "about"),
+        heroImage: image("Hero portrait / video poster (portrait, white background, about 1080 × 1920)", "about"),
         heroVideo: fields.file({
           label: "Hero video (optional, replaces the portrait)",
+          description: "MP4 (H.264), portrait 1080 × 1920 or 720 × 1280, no sound, ideally under 8 MB",
           directory: "public/media",
           publicPath: "/media/",
         }),
@@ -131,6 +132,15 @@ export default config({
             image: image("Image", "about"),
             alt: fields.text({ label: "Alt text" }),
             background: colour("Background", "#06090e"),
+            focus: fields.select({
+              label: "Keep visible when cropped",
+              options: [
+                { label: "Top", value: "top" },
+                { label: "Centre", value: "center" },
+                { label: "Bottom", value: "bottom" },
+              ],
+              defaultValue: "center",
+            }),
           }),
           { label: "Gallery (2 tiles)", itemLabel: (p) => p.fields.alt.value || "Tile" }
         ),
@@ -154,7 +164,6 @@ export default config({
           }),
           { label: "Social links", itemLabel: (p) => p.fields.label.value }
         ),
-        statement: fields.text({ label: "Closing statement", multiline: true }),
       },
     }),
   },
