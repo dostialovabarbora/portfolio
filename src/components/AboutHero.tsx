@@ -51,7 +51,7 @@ function GlitchLabel({ text, delay, style }: { text: string; delay: number; styl
       style={style}
       onPointerEnter={decode}
       aria-label={text.replace(/\n/g, " ")}
-      className="absolute cursor-default whitespace-pre font-headline text-[clamp(10px,1.157vw,20px)] font-normal uppercase leading-[0.96] tracking-[-0.01em]"
+      className="absolute cursor-default whitespace-pre font-headline text-[clamp(10px,1.042vw,18px)] font-normal uppercase leading-[0.96] tracking-[-0.01em]"
       initial={reduce ? false : { opacity: 0, y: 10, clipPath: "inset(-20% -10% 110% -10%)" }}
       animate={{ opacity: 1, y: 0, clipPath: "inset(-20% -10% -20% -10%)" }}
       transition={{ duration: 0.7, delay, ease }}
