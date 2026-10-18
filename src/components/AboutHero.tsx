@@ -8,37 +8,40 @@ type Label = { text: string; side: "left" | "right"; offsetX: number | null; top
 const ease = [0.22, 1, 0.36, 1] as const;
 /** Figma px (on the 1728 frame) → fluid vw, capped at the design size. */
 const fx = (px: number) => `min(${((px / 1728) * 100).toFixed(3)}vw, ${px}px)`;
-const GLYPHS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ#%&*/<>!?01";
+const GLYPHS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/#*+-";
+const glyph = () => GLYPHS[(Math.random() * GLYPHS.length) | 0];
 
-/** Label that scrambles + splits into red/blue for a moment when hovered. */
+/**
+ * Hover "decode": the label resolves left to right while the letters still to
+ * come flicker through random glyphs (refreshed every 40ms for a slightly
+ * choppy, terminal feel). Same timing as filipslovacek.com's nav labels:
+ * 32ms per character, never shorter than 300ms or longer than 560ms.
+ */
 function GlitchLabel({ text, delay, style }: { text: string; delay: number; style: React.CSSProperties }) {
   const reduce = useReducedMotion();
   const [shown, setShown] = useState(text);
-  const [glitching, setGlitching] = useState(false);
   const frame = useRef<number | undefined>(undefined);
 
   useEffect(() => () => cancelAnimationFrame(frame.current ?? 0), []);
 
-  const glitch = () => {
-    if (reduce || glitching) return;
-    setGlitching(true);
+  const decode = (e: React.PointerEvent) => {
+    if (reduce || e.pointerType !== "mouse") return;
+    cancelAnimationFrame(frame.current ?? 0);
+    const chars = text.split("");
+    const duration = Math.min(560, Math.max(300, chars.length * 32));
     const start = performance.now();
-    const duration = 520;
+    let last = 0;
+    const render = (settled: number) =>
+      setShown(chars.map((c, i) => (i < settled || c === " " || c === "\n" ? c : glyph())).join(""));
+    render(0);
     const tick = (now: number) => {
       const p = Math.min(1, (now - start) / duration);
-      // Characters settle back from left to right.
-      const settled = Math.floor(p * text.length);
-      setShown(
-        text
-          .split("")
-          .map((c, i) => (i < settled || c === " " || c === "\n" ? c : GLYPHS[Math.floor(Math.random() * GLYPHS.length)]))
-          .join("")
-      );
-      if (p < 1) frame.current = requestAnimationFrame(tick);
-      else {
-        setShown(text);
-        setGlitching(false);
+      if (now - last > 40 || p === 1) {
+        last = now;
+        render(Math.floor(p * chars.length));
       }
+      if (p < 1) frame.current = requestAnimationFrame(tick);
+      else setShown(text);
     };
     frame.current = requestAnimationFrame(tick);
   };
@@ -46,9 +49,9 @@ function GlitchLabel({ text, delay, style }: { text: string; delay: number; styl
   return (
     <motion.p
       style={style}
-      onMouseEnter={glitch}
+      onPointerEnter={decode}
       aria-label={text.replace(/\n/g, " ")}
-      className={`absolute cursor-default whitespace-pre font-headline text-[clamp(10px,1.157vw,20px)] font-normal uppercase leading-[0.96] tracking-[-0.01em] ${glitching ? "label-glitch" : ""}`}
+      className="absolute cursor-default whitespace-pre font-headline text-[clamp(10px,1.157vw,20px)] font-normal uppercase leading-[0.96] tracking-[-0.01em]"
       initial={reduce ? false : { opacity: 0, y: 10, clipPath: "inset(-20% -10% 110% -10%)" }}
       animate={{ opacity: 1, y: 0, clipPath: "inset(-20% -10% -20% -10%)" }}
       transition={{ duration: 0.7, delay, ease }}
