@@ -1,5 +1,5 @@
-heroImage: /images/about/hero-poster.webp
-heroVideo: /media/about-hero.mp4
+heroImage: /images/about/heroImage.webp
+heroVideo: /media/heroVideo.mp4
 heroLabels:
   - text: |-
       MILLENNIAL CORE,
@@ -57,7 +57,7 @@ intro:
 gallery:
   - image: /images/about/gallery/0/image.png
     alt: Barbora in a fisheye shot at night
-    background: '#06090e'
+    background: '#000000'
     focus: center
   - image: /images/about/gallery/1/image.png
     alt: Barbora in a white hooded jacket and yellow goggles

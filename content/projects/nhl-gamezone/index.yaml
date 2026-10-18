@@ -3,66 +3,79 @@ published: true
 category: digital-mark
 order: 20
 year: '2026'
-tagline: Going to say something right here, yeehaaw. Testing this two liner, brace yourself.
+tagline: >-
+  The NHL Game Zone is an official online hub on NHL.com featuring free-to-play
+  hockey games, contests, and interactive fan experiences
 client: National Hockey League
 indexTitle: NHL
 services:
-- website
-- visual-direction
+  - website
+  - visual-direction
 coverShape: wide
-thumbnail: /images/projects/nhl-gamezone/cover.webp
+thumbnail: /images/projects/nhl-gamezone/thumbnail.webp
 header:
   background: '#121111'
-  backgroundTo: ''
   textColor: '#ffffff'
 blocks:
-- discriminant: text
-  value:
-    columns:
-    - I knew creativity was part of me long before I had the words for it. Design, art, and curiosity always felt natural — less like a skill I picked up, more like a lens through which I see the world. For over 11 years, I’ve been turning ambitious ideas into brands, shaping digital products with purpose, and helping visions become something tangible, usable, and alive.
-    - Now, when I’m not feeding my endurance sports addiction, I work as a freelance multidisciplinary designer and as a Senior Product Designer at STRV. I’ve led design phases for clients including Arnold Schwarzenegger, MLS, IRONMAN, NHL, and 25+ others. I’m drawn to strong ideas, sharp execution, AND work that has enough personality to leave a mark.
-- discriminant: pair
-  value:
-    left:
-      image: /images/projects/nhl-gamezone/01-left.webp
-      alt: ''
-      background: '#000000'
-    right:
-      image: /images/projects/nhl-gamezone/01-right.webp
-      alt: ''
-      background: '#000000'
-- discriminant: image
-  value:
-    image: /images/projects/nhl-gamezone/02-ice.webp
-    alt: ''
-    background: '#dfe8ee'
-    fit: cover
-    rounded: true
-- discriminant: image
-  value:
-    image: /images/projects/nhl-gamezone/03-web.webp
-    alt: ''
-    background: '#f8f7f5'
-    fit: cover
-    rounded: false
-- discriminant: text
-  value:
-    columns:
-    - I knew creativity was part of me long before I had the words for it. Design, art, and curiosity always felt natural — less like a skill I picked up, more like a lens through which I see the world. For over 11 years, I’ve been turning ambitious ideas into brands, shaping digital products with purpose, and helping visions become something tangible, usable, and alive.
-- discriminant: image
-  value:
-    image: /images/projects/nhl-gamezone/04-dashboard.webp
-    alt: ''
-    background: '#2a1f5c'
-    fit: cover
-    rounded: true
-- discriminant: pair
-  value:
-    left:
-      image: /images/projects/nhl-gamezone/05-left.webp
-      alt: ''
-      background: '#000000'
-    right:
-      image: /images/projects/nhl-gamezone/05-right.webp
-      alt: ''
-      background: '#000000'
+  - discriminant: text
+    value:
+      columns:
+        - >-
+          I knew creativity was part of me long before I had the words for it.
+          Design, art, and curiosity always felt natural — less like a skill I
+          picked up, more like a lens through which I see the world. For over 11
+          years, I’ve been turning ambitious ideas into brands, shaping digital
+          products with purpose, and helping visions become something tangible,
+          usable, and alive.
+        - >-
+          Now, when I’m not feeding my endurance sports addiction, I work as a
+          freelance multidisciplinary designer and as a Senior Product Designer
+          at STRV. I’ve led design phases for clients including Arnold
+          Schwarzenegger, MLS, IRONMAN, NHL, and 25+ others. I’m drawn to strong
+          ideas, sharp execution, AND work that has enough personality to leave
+          a mark.
+  - discriminant: pair
+    value:
+      left:
+        image: /images/projects/nhl-gamezone/blocks/1/value/left/image.webp
+        video: /media/nhl-gamezone/blocks/1/value/left/video.mp4
+        background: '#000000'
+      right:
+        image: /images/projects/nhl-gamezone/blocks/1/value/right/image.webp
+        background: '#000000'
+  - discriminant: image
+    value:
+      image: /images/projects/nhl-gamezone/blocks/2/value/image.png
+      background: '#dfe8ee'
+      fit: cover
+      rounded: true
+  - discriminant: image
+    value:
+      image: /images/projects/nhl-gamezone/blocks/3/value/image.webp
+      background: '#f8f7f5'
+      fit: cover
+      rounded: false
+  - discriminant: text
+    value:
+      columns:
+        - >-
+          I knew creativity was part of me long before I had the words for it.
+          Design, art, and curiosity always felt natural — less like a skill I
+          picked up, more like a lens through which I see the world. For over 11
+          years, I’ve been turning ambitious ideas into brands, shaping digital
+          products with purpose, and helping visions become something tangible,
+          usable, and alive.
+  - discriminant: image
+    value:
+      image: /images/projects/nhl-gamezone/blocks/5/value/image.png
+      background: '#2a1f5c'
+      fit: cover
+      rounded: true
+  - discriminant: pair
+    value:
+      left:
+        image: /images/projects/nhl-gamezone/blocks/6/value/left/image.webp
+        background: '#000000'
+      right:
+        image: /images/projects/nhl-gamezone/blocks/6/value/right/image.png
+        background: '#000000'

@@ -3,73 +3,88 @@ published: true
 category: digital-mark
 order: 50
 year: '2026'
-tagline: Going to say something right here, yeehaaw. Testing this two liner, brace yourself.
+tagline: >-
+  Full website rebuild for Velaa Private Island, one of the Maldives' most
+  exclusive resorts. Velaa is a world of its own.
+
+  A place you don’t just visit. You belong.
 client: Velaa Private Island Maldives
 indexTitle: Velaa Island
 services:
-- website
-- visual-direction
+  - website
+  - visual-direction
 coverShape: tall
-thumbnail: /images/projects/velaa/cover.webp
+thumbnail: /images/projects/velaa/thumbnail.webp
 header:
   background: '#d8ab43'
-  backgroundTo: ''
   textColor: '#ffffff'
 blocks:
-- discriminant: text
-  value:
-    columns:
-    - I knew creativity was part of me long before I had the words for it. Design, art, and curiosity always felt natural — less like a skill I picked up, more like a lens through which I see the world. For over 11 years, I’ve been turning ambitious ideas into brands, shaping digital products with purpose, and helping visions become something tangible, usable, and alive.
-    - Now, when I’m not feeding my endurance sports addiction, I work as a freelance multidisciplinary designer and as a Senior Product Designer at STRV. I’ve led design phases for clients including Arnold Schwarzenegger, MLS, IRONMAN, NHL, and 25+ others. I’m drawn to strong ideas, sharp execution, AND work that has enough personality to leave a mark.
-- discriminant: pair
-  value:
-    left:
-      image: /images/projects/velaa/01-left.webp
-      alt: ''
-      background: '#000000'
-    right:
-      image: /images/projects/velaa/01-right.webp
-      alt: ''
-      background: '#000000'
-- discriminant: image
-  value:
-    image: /images/projects/velaa/02-editorial.webp
-    alt: ''
-    background: '#4a4238'
-    fit: cover
-    rounded: true
-- discriminant: image
-  value:
-    image: /images/projects/velaa/03-beach.webp
-    alt: ''
-    background: '#aba7a1'
-    fit: cover
-    rounded: true
-- discriminant: text
-  value:
-    columns:
-    - I knew creativity was part of me long before I had the words for it. Design, art, and curiosity always felt natural — less like a skill I picked up, more like a lens through which I see the world. For over 11 years, I’ve been turning ambitious ideas into brands, shaping digital products with purpose, and helping visions become something tangible, usable, and alive.
-- discriminant: image
-  value:
-    image: /images/projects/velaa/04-villa.webp
-    alt: ''
-    background: '#0a0a3a'
-    fit: cover
-    rounded: true
-- discriminant: pair
-  value:
-    left:
-      image: /images/projects/velaa/05-left.webp
-      alt: ''
-      background: '#000000'
-    right:
-      image: /images/projects/velaa/05-right.webp
-      alt: ''
-      background: '#000000'
-- discriminant: image
-  value:
-    image: /images/projects/velaa/06-note.webp
-    alt: ''
-    background: '#f8f7f5'
-    fit: cover
-    rounded: false
+  - discriminant: text
+    value:
+      columns:
+        - >-
+          I knew creativity was part of me long before I had the words for it.
+          Design, art, and curiosity always felt natural — less like a skill I
+          picked up, more like a lens through which I see the world. For over 11
+          years, I’ve been turning ambitious ideas into brands, shaping digital
+          products with purpose, and helping visions become something tangible,
+          usable, and alive.
+        - >-
+          Now, when I’m not feeding my endurance sports addiction, I work as a
+          freelance multidisciplinary designer and as a Senior Product Designer
+          at STRV. I’ve led design phases for clients including Arnold
+          Schwarzenegger, MLS, IRONMAN, NHL, and 25+ others. I’m drawn to strong
+          ideas, sharp execution, AND work that has enough personality to leave
+          a mark.
+  - discriminant: pair
+    value:
+      left:
+        image: /images/projects/velaa/blocks/1/value/left/image.png
+        background: '#000000'
+      right:
+        image: /images/projects/velaa/blocks/1/value/right/image.webp
+        background: '#000000'
+  - discriminant: image
+    value:
+      image: /images/projects/velaa/blocks/2/value/image.png
+      background: '#4a4238'
+      fit: cover
+      rounded: true
+  - discriminant: image
+    value:
+      image: /images/projects/velaa/blocks/3/value/image.png
+      background: '#aba7a1'
+      fit: cover
+      rounded: true
+  - discriminant: text
+    value:
+      columns:
+        - >-
+          I knew creativity was part of me long before I had the words for it.
+          Design, art, and curiosity always felt natural — less like a skill I
+          picked up, more like a lens through which I see the world. For over 11
+          years, I’ve been turning ambitious ideas into brands, shaping digital
+          products with purpose, and helping visions become something tangible,
+          usable, and alive.
+  - discriminant: image
+    value:
+      image: /images/projects/velaa/blocks/5/value/image.webp
+      video: /media/velaa/blocks/5/value/video.mp4
+      background: '#0a0a3a'
+      fit: cover
+      rounded: true
+  - discriminant: pair
+    value:
+      left:
+        image: /images/projects/velaa/blocks/6/value/left/image.webp
+        video: /media/velaa/blocks/6/value/left/video.mp4
+        background: '#000000'
+      right:
+        image: /images/projects/velaa/blocks/6/value/right/image.png
+        background: '#000000'
+  - discriminant: image
+    value:
+      image: /images/projects/velaa/blocks/7/value/image.webp
+      background: '#f8f7f5'
+      fit: cover
+      rounded: false

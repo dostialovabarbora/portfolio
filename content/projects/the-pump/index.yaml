@@ -3,66 +3,77 @@ published: true
 category: digital-mark
 order: 40
 year: '2022'
-tagline: Going to say something right here, yeehaaw. Testing this two liner, brace yourself.
+tagline: >-
+  The Pump — A community-building workout platform connecting Arnold
+  Schwarzenegger to his fans, supporters and fellow training buffs.
 client: Arnold Schwarzenegger
-indexTitle: ''
 services:
-- branding
-- mobile-app
+  - branding
+  - mobile-app
 coverShape: square
-thumbnail: /images/projects/the-pump/cover.webp
+thumbnail: /images/projects/the-pump/thumbnail.webp
 header:
   background: '#e43c36'
-  backgroundTo: ''
   textColor: '#ffffff'
 blocks:
-- discriminant: text
-  value:
-    columns:
-    - I knew creativity was part of me long before I had the words for it. Design, art, and curiosity always felt natural — less like a skill I picked up, more like a lens through which I see the world. For over 11 years, I’ve been turning ambitious ideas into brands, shaping digital products with purpose, and helping visions become something tangible, usable, and alive.
-    - Now, when I’m not feeding my endurance sports addiction, I work as a freelance multidisciplinary designer and as a Senior Product Designer at STRV. I’ve led design phases for clients including Arnold Schwarzenegger, MLS, IRONMAN, NHL, and 25+ others. I’m drawn to strong ideas, sharp execution, AND work that has enough personality to leave a mark.
-- discriminant: image
-  value:
-    image: /images/projects/the-pump/01-video.webp
-    alt: ''
-    background: '#553631'
-    fit: cover
-    rounded: true
-- discriminant: pair
-  value:
-    left:
-      image: /images/projects/the-pump/02-left.webp
-      alt: ''
-      background: '#2a2a2a'
-    right:
-      image: /images/projects/the-pump/02-right.webp
-      alt: ''
-      background: '#000000'
-- discriminant: image
-  value:
-    image: /images/projects/the-pump/03-community.webp
-    alt: ''
-    background: '#f8f7f5'
-    fit: cover
-    rounded: false
-- discriminant: text
-  value:
-    columns:
-    - I knew creativity was part of me long before I had the words for it. Design, art, and curiosity always felt natural — less like a skill I picked up, more like a lens through which I see the world. For over 11 years, I’ve been turning ambitious ideas into brands, shaping digital products with purpose, and helping visions become something tangible, usable, and alive.
-- discriminant: pair
-  value:
-    left:
-      image: /images/projects/the-pump/04-left.webp
-      alt: ''
-      background: '#e43c36'
-    right:
-      image: /images/projects/the-pump/04-right.webp
-      alt: ''
-      background: '#000000'
-- discriminant: image
-  value:
-    image: /images/projects/the-pump/05-poster.webp
-    alt: ''
-    background: '#f5e5d2'
-    fit: cover
-    rounded: true
+  - discriminant: text
+    value:
+      columns:
+        - >-
+          I knew creativity was part of me long before I had the words for it.
+          Design, art, and curiosity always felt natural — less like a skill I
+          picked up, more like a lens through which I see the world. For over 11
+          years, I’ve been turning ambitious ideas into brands, shaping digital
+          products with purpose, and helping visions become something tangible,
+          usable, and alive.
+        - >-
+          Now, when I’m not feeding my endurance sports addiction, I work as a
+          freelance multidisciplinary designer and as a Senior Product Designer
+          at STRV. I’ve led design phases for clients including Arnold
+          Schwarzenegger, MLS, IRONMAN, NHL, and 25+ others. I’m drawn to strong
+          ideas, sharp execution, AND work that has enough personality to leave
+          a mark.
+  - discriminant: image
+    value:
+      image: /images/projects/the-pump/blocks/1/value/image.webp
+      background: '#553631'
+      fit: cover
+      rounded: true
+  - discriminant: pair
+    value:
+      left:
+        image: /images/projects/the-pump/blocks/2/value/left/image.webp
+        background: '#2a2a2a'
+      right:
+        image: /images/projects/the-pump/blocks/2/value/right/image.webp
+        background: '#000000'
+  - discriminant: image
+    value:
+      image: /images/projects/the-pump/blocks/3/value/image.webp
+      background: '#f8f7f5'
+      fit: cover
+      rounded: false
+  - discriminant: text
+    value:
+      columns:
+        - >-
+          I knew creativity was part of me long before I had the words for it.
+          Design, art, and curiosity always felt natural — less like a skill I
+          picked up, more like a lens through which I see the world. For over 11
+          years, I’ve been turning ambitious ideas into brands, shaping digital
+          products with purpose, and helping visions become something tangible,
+          usable, and alive.
+  - discriminant: pair
+    value:
+      left:
+        image: /images/projects/the-pump/blocks/5/value/left/image.webp
+        background: '#e43c36'
+      right:
+        image: /images/projects/the-pump/blocks/5/value/right/image.webp
+        background: '#000000'
+  - discriminant: image
+    value:
+      image: /images/projects/the-pump/blocks/6/value/image.webp
+      background: '#f5e5d2'
+      fit: cover
+      rounded: true
