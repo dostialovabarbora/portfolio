@@ -30,10 +30,14 @@ function BlockView({ block }: { block: Block }) {
       return <TextBlock columns={block.value.columns} />;
     case "image": {
       const v = block.value;
-      if (!v.image) return null;
+      if (!v.image && !v.video) return null;
       return (
         <div className="px-[var(--gutter-case)]">
-          <MediaTile src={v.image} alt={v.alt} background={v.background} fit={v.fit} rounded={v.rounded} aspect="1648 / 936" sizes={FULL} />
+          {v.video ? (
+            <VideoTile src={v.video} poster={v.image} background={v.background} fit={v.fit} rounded={v.rounded} label={v.alt} />
+          ) : (
+            <MediaTile src={v.image!} alt={v.alt} background={v.background} fit={v.fit} rounded={v.rounded} aspect="1648 / 936" sizes={FULL} />
+          )}
         </div>
       );
     }
@@ -42,7 +46,9 @@ function BlockView({ block }: { block: Block }) {
       return (
         <div className="grid gap-[var(--gap)] px-[var(--gutter-case)] md:grid-cols-2">
           {[left, right].map((side, i) =>
-            side.image ? (
+            side.video ? (
+              <VideoTile key={i} src={side.video} poster={side.image} background={side.background} aspect="1 / 1" label={side.alt} />
+            ) : side.image ? (
               <MediaTile key={i} src={side.image} alt={side.alt} background={side.background} aspect="1 / 1" sizes={HALF} />
             ) : (
               <div key={i} className="aspect-square rounded-[var(--radius)]" style={{ background: side.background }} />

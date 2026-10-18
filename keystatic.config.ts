@@ -261,10 +261,16 @@ export default config({
               }),
             },
             image: {
-              label: "Full-width image",
+              label: "Full-width image or video",
               itemLabel: (p) => p.fields.alt.value || "Image",
               schema: fields.object({
                 image: image("Image", "projects"),
+                video: fields.file({
+                  label: "Video",
+                  description: "Optional MP4 (H.264). Plays muted on a loop instead of the image; the image becomes its still frame",
+                  directory: "public/media",
+                  publicPath: "/media/",
+                }),
                 alt: fields.text({ label: "Alt text" }),
                 background: colour("Background", "#f7f1e4"),
                 fit: fields.select({
@@ -279,16 +285,28 @@ export default config({
               }),
             },
             pair: {
-              label: "Two squares",
+              label: "Two squares (image or video)",
               itemLabel: (p) => p.fields.left.fields.alt.value || "Pair",
               schema: fields.object({
                 left: fields.object({
                   image: image("Left image", "projects"),
+                  video: fields.file({
+                    label: "Left video",
+                    description: "Optional MP4 (H.264). Plays muted on a loop instead of the image; the image becomes its still frame",
+                    directory: "public/media",
+                    publicPath: "/media/",
+                  }),
                   alt: fields.text({ label: "Alt text" }),
                   background: colour("Background", "#000000"),
                 }),
                 right: fields.object({
                   image: image("Right image", "projects"),
+                  video: fields.file({
+                    label: "Right video",
+                    description: "Optional MP4 (H.264). Plays muted on a loop instead of the image; the image becomes its still frame",
+                    directory: "public/media",
+                    publicPath: "/media/",
+                  }),
                   alt: fields.text({ label: "Alt text" }),
                   background: colour("Background", "#000000"),
                 }),
