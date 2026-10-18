@@ -37,7 +37,9 @@ export const SERVICES = [
 ];
 
 export default config({
-  storage: githubRepo ? { kind: "github", repo: githubRepo } : { kind: "local" },
+  // Local `npm run dev` always edits the files on disk (whatever branch you're on);
+  // the deployed site edits through GitHub.
+  storage: githubRepo && process.env.NODE_ENV === "production" ? { kind: "github", repo: githubRepo } : { kind: "local" },
   ui: {
     brand: { name: "Barb · Portfolio" },
     navigation: {
