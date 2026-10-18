@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { AnimatePresence, motion, useMotionValue, useReducedMotion, useSpring } from "motion/react";
 import { useState } from "react";
+import { AhojTitle } from "./Drawings";
 import { Reveal } from "./Reveal";
 
 export type Highlight = { text: string; image: string | null };
@@ -81,7 +82,12 @@ export function Intro({ text, highlights }: { text: string; highlights: readonly
   if (!lines.length) return null;
   return (
     <section className="flex min-h-[clamp(220px,51.5vw,890px)] items-center justify-center px-[var(--gutter)] pb-[clamp(40px,4.63vw,80px)] pt-[clamp(24px,4.63vw,80px)]">
-      <div className="w-full max-w-[1320px] [container-type:inline-size]">
+      <div className="relative w-full max-w-[1320px] [container-type:inline-size]">
+        {/* Hand-lettered "Ahoj, I'm Barb" sits just above the statement and writes itself in */}
+        <AhojTitle
+          className="absolute left-1/2 -translate-x-1/2 rotate-[0.9deg] text-ink"
+          style={{ width: u(306), height: u(55), bottom: `calc(100% + ${u(14)})` }}
+        />
         <Reveal y={24}>
           <p
             className="text-center font-headline font-normal uppercase leading-[0.9]"

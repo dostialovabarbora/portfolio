@@ -15,7 +15,7 @@ const SHAPE: Record<CoverShape, string> = { tall: "507 / 660", square: "1 / 1", 
 function Labels({ items, className = "" }: { items: string[]; className?: string }) {
   if (!items.length) return null;
   return (
-    <ul className={`flex flex-wrap gap-1 ${className}`}>
+    <ul className={`flex flex-wrap gap-1.5 ${className}`}>
       {items.map((s) => (
         <li
           key={s}
@@ -145,7 +145,7 @@ export function ProjectIndex({ items }: { items: IndexItem[] }) {
   const [view, setView] = useState<View>("covers");
 
   return (
-    <section id="work" className="scroll-mt-6 px-[var(--gutter)] pb-[clamp(80px,11.57vw,200px)]">
+    <section id="work" className="scroll-mt-6 px-[var(--gutter)] pb-[clamp(96px,13.89vw,240px)]">
       <header className="flex flex-col items-center">
         <h2 className="relative text-center font-headline text-[clamp(32px,2.78vw,48px)] font-medium uppercase leading-[0.9]">
           Selected

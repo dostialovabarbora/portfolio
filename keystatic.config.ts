@@ -66,8 +66,10 @@ export default config({
           }),
           { label: "Intro hover images", itemLabel: (p) => p.fields.text.value || "Highlight" }
         ),
+        statement: fields.text({ label: "Closing statement (red text on the photo card)", multiline: true }),
+        statementImage: image("Closing statement background photo", "home"),
         manifesto: fields.text({
-          label: "Red manifesto",
+          label: "Red manifesto (About page)",
           description: "The hand-drawn circle, arrows and underline are placed for the current wording",
           multiline: true,
         }),
