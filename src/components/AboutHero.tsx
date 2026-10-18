@@ -126,9 +126,10 @@ export function AboutHero({ image, video, labels }: { image?: string | null; vid
     // Tapping anywhere outside a bubble closes the open text (phones).
     <section className="px-[var(--gutter)]">
       <div className="relative md:h-[clamp(520px,57.87vw,1000px)] md:overflow-hidden md:rounded-[var(--radius-lg)]">
-        {/* Phone: full-width 401 × 600 video with bubbles. Desktop: centred 550 × 824 portrait. */}
+        {/* Phone: 401 × 600 video, full width — but never taller than the screen minus the nav and
+            the text line under it, so the tapped text is always visible. Desktop: centred 550 × 824 portrait. */}
         <motion.div
-          className="relative -mx-[var(--gutter)] aspect-[401/600] md:absolute md:bottom-[8.8%] md:left-1/2 md:top-[8.8%] md:mx-0 md:aspect-[550/824] md:-translate-x-1/2"
+          className="relative mx-auto aspect-[401/600] h-[min(calc(100vw*600/401),calc(100svh-206px))] max-w-[100vw] md:absolute md:bottom-[8.8%] md:left-1/2 md:top-[8.8%] md:h-auto md:max-w-none md:aspect-[550/824] md:-translate-x-1/2"
           initial={reduce ? false : { opacity: 0, y: 40, filter: "blur(8px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: 1.2, ease }}
