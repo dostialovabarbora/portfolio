@@ -14,7 +14,7 @@ services:
   - website
   - visual-direction
 coverShape: tall
-thumbnail: /images/projects/velaa/thumbnail.webp
+thumbnail: /images/projects/velaa/thumbnail.png
 header:
   background: '#d8ab43'
   textColor: '#ffffff'
