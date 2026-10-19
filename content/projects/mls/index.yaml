@@ -50,7 +50,7 @@ blocks:
   - discriminant: image
     value:
       image: /images/projects/mls/blocks/3/value/image.webp
-      video: /media/mls/blocks/3/value/video.mov
+      video: /media/mls/blocks/3/value/video.mp4
       background: '#cb9700'
       fit: cover
       rounded: true
