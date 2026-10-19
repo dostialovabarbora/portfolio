@@ -39,11 +39,11 @@ blocks:
         image: /images/projects/mls/blocks/1/value/left/image.webp
         background: '#000000'
       right:
-        image: /images/projects/mls/blocks/1/value/right/image.webp
+        image: /images/projects/mls/blocks/1/value/right/image.png
         background: '#000000'
   - discriminant: image
     value:
-      image: /images/projects/mls/blocks/2/value/image.webp
+      image: /images/projects/mls/blocks/2/value/image.png
       background: '#000000'
       fit: cover
       rounded: true
@@ -73,7 +73,7 @@ blocks:
   - discriminant: pair
     value:
       left:
-        image: /images/projects/mls/blocks/6/value/left/image.webp
+        image: /images/projects/mls/blocks/6/value/left/image.png
         background: '#000000'
       right:
         image: /images/projects/mls/blocks/6/value/right/image.webp
