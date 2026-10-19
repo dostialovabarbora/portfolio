@@ -301,7 +301,7 @@ function Tile({
         className="group relative block w-full cursor-[inherit] overflow-hidden bg-[#f2f2f2] outline-none focus-visible:ring-2 focus-visible:ring-ink"
         style={{ height: piece.h * scale, opacity: hidden ? 0 : 1 }}
       >
-        <Image
+        <Image quality={90}
           src={piece.image}
           alt={piece.alt || piece.title}
           fill
@@ -374,7 +374,7 @@ function Detail({
             exit={{ opacity: 0 }}
             transition={{ duration: 0.45, ease: EASE }}
           >
-            <Image src={piece.image} alt={piece.alt || piece.title} fill sizes="100vw" className="object-cover" priority />
+            <Image quality={90} src={piece.image} alt={piece.alt || piece.title} fill sizes="100vw" className="object-cover" priority />
           </motion.div>
         </AnimatePresence>
 

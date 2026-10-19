@@ -78,7 +78,7 @@ function Cover({ item, index, shape }: { item: IndexItem; index: number; shape?:
       <Link href={`/work/${item.slug}`} className="group block">
         <div className="relative overflow-hidden bg-sand" style={{ aspectRatio: SHAPE[shape ?? item.coverShape] }}>
           {item.cover ? (
-            <Image
+            <Image quality={90}
               src={item.cover}
               alt={item.title}
               fill
@@ -132,7 +132,7 @@ function Line({ item, index }: { item: IndexItem; index: number }) {
             animate={hover ? { opacity: 1, scale: 1, y: "-50%" } : { opacity: 0, scale: reduce ? 1 : 0.85, y: "-42%" }}
             transition={{ type: "spring", stiffness: 300, damping: 26 }}
           >
-            <Image src={item.cover} alt="" fill sizes="280px" className="object-cover" />
+            <Image quality={90} src={item.cover} alt="" fill sizes="280px" className="object-cover" />
           </motion.span>
         ) : null}
       </Link>

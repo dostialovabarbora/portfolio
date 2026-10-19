@@ -34,7 +34,7 @@ export function StatementCard({ text, image }: { text: string; image?: string | 
       >
         {image ? (
           <motion.div className="absolute inset-0" style={{ scale: reduce ? 1 : scale }}>
-            <Image src={image} alt="" fill sizes="100vw" className="object-cover" />
+            <Image quality={90} src={image} alt="" fill sizes="100vw" className="object-cover" />
           </motion.div>
         ) : null}
         <div className="absolute inset-0 bg-black/20" />

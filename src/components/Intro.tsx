@@ -62,7 +62,7 @@ function Name({ text, image }: { text: string; image: string | null }) {
               exit={reduce ? { opacity: 0 } : { opacity: 0, scale: 0.9, y: 8, rotate: -6 }}
               transition={{ type: "spring", stiffness: 320, damping: 24 }}
             >
-              <Image src={image} alt="" fill sizes="180px" className="object-cover" />
+              <Image quality={90} src={image} alt="" fill sizes="180px" className="object-cover" />
             </motion.span>
           </motion.span>
         ) : null}

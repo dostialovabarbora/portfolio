@@ -41,7 +41,7 @@ export function MediaTile({
         viewport={{ once: true, margin: "0px 0px -10% 0px" }}
         transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1] }}
       >
-        <Image
+        <Image quality={90}
           src={src}
           alt={alt}
           fill

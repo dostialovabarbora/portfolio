@@ -138,7 +138,7 @@ export function AboutHero({ image, video, labels }: { image?: string | null; vid
             {video ? (
               <video className="h-full w-full object-cover [filter:brightness(1.012)]" src={video} poster={image ?? undefined} autoPlay muted loop playsInline />
             ) : image ? (
-              <Image src={image} alt="Barbora Dostálová" fill priority sizes="(max-width: 768px) 100vw, 560px" className="object-cover [filter:brightness(1.012)]" />
+              <Image quality={90} src={image} alt="Barbora Dostálová" fill priority sizes="(max-width: 768px) 100vw, 560px" className="object-cover [filter:brightness(1.012)]" />
             ) : null}
           </div>
           <div className="md:hidden">
