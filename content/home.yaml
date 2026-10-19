@@ -4,15 +4,15 @@ intro: |-
   to build together?
 introHighlights:
   - text: Arnold Schwarzenegger
-    image: /images/home/arnold.webp
+    image: /images/home/introHighlights/0/image.webp
   - text: IRONMAN
-    image: /images/home/ironman.webp
+    image: /images/home/introHighlights/1/image.webp
   - text: NHL
-    image: /images/home/nhl.webp
+    image: /images/home/introHighlights/2/image.webp
   - text: MLS
-    image: /images/home/mls.webp
+    image: /images/home/introHighlights/3/image.webp
 statement: Endurance, health and fitness are not just sport related topics for me. They are shaping me as a human being — as a designer.
-statementImage: /images/home/statement.webp
+statementImage: /images/home/statementImage.webp
 manifesto: 'I’m drawn to those who believe
 
   a little too much, dream a little too far, & carry ideas that feel almost impossible — because those are the visions
