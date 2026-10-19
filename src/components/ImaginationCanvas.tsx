@@ -36,7 +36,13 @@ function layout(pieces: Piece[]) {
   const placed: Placed[] = pieces.map((p, i) => {
     const b = Math.floor(i / SPOTS.length);
     const s = SPOTS[i % SPOTS.length];
-    return { ...p, index: i, x: s.x + (b % cols) * TILE.w, y: s.y + Math.floor(b / cols) * TILE.h, w: s.w, h: s.h };
+    // Keep the picture's own proportions: fit it inside the spot (never crop), centred in it.
+    const k = p.width && p.height ? Math.min(s.w / p.width, s.h / p.height) : 1;
+    const w = p.width && p.height ? Math.round(p.width * k) : s.w;
+    const h = p.width && p.height ? Math.round(p.height * k) : s.h;
+    const x = s.x + (s.w - w) / 2 + (b % cols) * TILE.w;
+    const y = s.y + (s.h - h) / 2 + Math.floor(b / cols) * TILE.h;
+    return { ...p, index: i, x, y, w, h };
   });
   // Canvas ends 80px (Figma margin) past the right-most / lowest picture + caption.
   const width = Math.max(TILE.w, ...placed.map((p) => p.x + p.w + 80));
