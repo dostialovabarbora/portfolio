@@ -3,73 +3,84 @@ published: true
 category: digital-mark
 order: 30
 year: '2024'
-tagline: Going to say something right here, yeehaaw. Testing this two liner, brace yourself.
+tagline: >-
+  Going to say something right here, yeehaaw. Testing this two liner, brace
+  yourself.
 client: Major League Soccer
-indexTitle: ''
 services:
-- mobile-app
-- visual-direction
+  - mobile-app
+  - visual-direction
 coverShape: square
 thumbnail: /images/projects/mls/thumbnail.webp
 header:
   background: '#111441'
-  backgroundTo: ''
   textColor: '#ffffff'
 blocks:
-- discriminant: text
-  value:
-    columns:
-    - I knew creativity was part of me long before I had the words for it. Design, art, and curiosity always felt natural — less like a skill I picked up, more like a lens through which I see the world. For over 11 years, I’ve been turning ambitious ideas into brands, shaping digital products with purpose, and helping visions become something tangible, usable, and alive.
-    - Now, when I’m not feeding my endurance sports addiction, I work as a freelance multidisciplinary designer and as a Senior Product Designer at STRV. I’ve led design phases for clients including Arnold Schwarzenegger, MLS, IRONMAN, NHL, and 25+ others. I’m drawn to strong ideas, sharp execution, AND work that has enough personality to leave a mark.
-- discriminant: pair
-  value:
-    left:
-      image: /images/projects/mls/blocks/1/value/left/image.webp
-      alt: ''
+  - discriminant: text
+    value:
+      columns:
+        - >-
+          I knew creativity was part of me long before I had the words for it.
+          Design, art, and curiosity always felt natural — less like a skill I
+          picked up, more like a lens through which I see the world. For over 11
+          years, I’ve been turning ambitious ideas into brands, shaping digital
+          products with purpose, and helping visions become something tangible,
+          usable, and alive.
+        - >-
+          Now, when I’m not feeding my endurance sports addiction, I work as a
+          freelance multidisciplinary designer and as a Senior Product Designer
+          at STRV. I’ve led design phases for clients including Arnold
+          Schwarzenegger, MLS, IRONMAN, NHL, and 25+ others. I’m drawn to strong
+          ideas, sharp execution, AND work that has enough personality to leave
+          a mark.
+  - discriminant: pair
+    value:
+      left:
+        image: /images/projects/mls/blocks/1/value/left/image.webp
+        background: '#000000'
+      right:
+        image: /images/projects/mls/blocks/1/value/right/image.webp
+        background: '#000000'
+  - discriminant: image
+    value:
+      image: /images/projects/mls/blocks/2/value/image.webp
       background: '#000000'
-    right:
-      image: /images/projects/mls/blocks/1/value/right/image.webp
-      alt: ''
+      fit: cover
+      rounded: true
+  - discriminant: image
+    value:
+      image: /images/projects/mls/blocks/3/value/image.webp
+      video: /media/mls/blocks/3/value/video.mov
+      background: '#cb9700'
+      fit: cover
+      rounded: true
+  - discriminant: text
+    value:
+      columns:
+        - >-
+          I knew creativity was part of me long before I had the words for it.
+          Design, art, and curiosity always felt natural — less like a skill I
+          picked up, more like a lens through which I see the world. For over 11
+          years, I’ve been turning ambitious ideas into brands, shaping digital
+          products with purpose, and helping visions become something tangible,
+          usable, and alive.
+  - discriminant: image
+    value:
+      image: /images/projects/mls/blocks/5/value/image.webp
       background: '#000000'
-- discriminant: image
-  value:
-    image: /images/projects/mls/blocks/2/value/image.webp
-    alt: ''
-    background: '#000000'
-    fit: cover
-    rounded: true
-- discriminant: image
-  value:
-    image: /images/projects/mls/blocks/3/value/image.webp
-    alt: ''
-    background: '#cb9700'
-    fit: cover
-    rounded: true
-- discriminant: text
-  value:
-    columns:
-    - I knew creativity was part of me long before I had the words for it. Design, art, and curiosity always felt natural — less like a skill I picked up, more like a lens through which I see the world. For over 11 years, I’ve been turning ambitious ideas into brands, shaping digital products with purpose, and helping visions become something tangible, usable, and alive.
-- discriminant: image
-  value:
-    image: /images/projects/mls/blocks/5/value/image.webp
-    alt: ''
-    background: '#000000'
-    fit: cover
-    rounded: true
-- discriminant: pair
-  value:
-    left:
-      image: /images/projects/mls/blocks/6/value/left/image.webp
-      alt: ''
-      background: '#000000'
-    right:
-      image: /images/projects/mls/blocks/6/value/right/image.webp
-      alt: ''
-      background: '#000000'
-- discriminant: image
-  value:
-    image: /images/projects/mls/blocks/7/value/image.webp
-    alt: ''
-    background: '#f8f7f5'
-    fit: cover
-    rounded: false
+      fit: cover
+      rounded: true
+  - discriminant: pair
+    value:
+      left:
+        image: /images/projects/mls/blocks/6/value/left/image.webp
+        background: '#000000'
+      right:
+        image: /images/projects/mls/blocks/6/value/right/image.webp
+        background: '#000000'
+  - discriminant: image
+    value:
+      image: /images/projects/mls/blocks/7/value/image.webp
+      background: '#f8f7f5'
+      fit: cover
+      rounded: false
