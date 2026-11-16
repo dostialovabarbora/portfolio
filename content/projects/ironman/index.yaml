@@ -77,4 +77,5 @@ blocks:
         background: '#9b8f87'
       right:
         image: /images/projects/ironman/blocks/6/value/right/image.webp
+        video: /media/ironman/blocks/6/value/right/video.mov
         background: '#c60f2d'
