@@ -3,71 +3,78 @@ published: true
 category: digital-mark
 order: 10
 year: '2026'
-tagline: Going to say something right here, yeehaaw. Testing this two liner, brace
+tagline: >-
+  Going to say something right here, yeehaaw. Testing this two liner, brace
   yourself.
 client: IRONMAN Triathlon
 services:
-- mobile-app
-- visual-direction
+  - mobile-app
+  - product-design
 coverShape: tall
 thumbnail: /images/projects/ironman/thumbnail.webp
 header:
   background: '#c8102e'
   textColor: '#ffffff'
 blocks:
-- discriminant: text
-  value:
-    columns:
-    - I knew creativity was part of me long before I had the words for it. Design,
-      art, and curiosity always felt natural — less like a skill I picked up, more
-      like a lens through which I see the world. For over 11 years, I’ve been turning
-      ambitious ideas into brands, shaping digital products with purpose, and helping
-      visions become something tangible, usable, and alive.
-    - Now, when I’m not feeding my endurance sports addiction, I work as a freelance
-      multidisciplinary designer and as a Senior Product Designer at STRV. I’ve led
-      design phases for clients including Arnold Schwarzenegger, MLS, IRONMAN, NHL,
-      and 25+ others. I’m drawn to strong ideas, sharp execution, AND work that has
-      enough personality to leave a mark.
-- discriminant: pair
-  value:
-    left:
-      image: /images/projects/ironman/blocks/1/value/left/image.webp
-      video: /media/ironman/blocks/1/value/left/video.mp4
-      background: '#c8102e'
-    right:
-      image: /images/projects/ironman/blocks/1/value/right/image.webp
-      background: '#080808'
-- discriminant: image
-  value:
-    image: /images/projects/ironman/blocks/2/value/image.webp
-    background: '#000000'
-    fit: cover
-    rounded: true
-- discriminant: image
-  value:
-    image: /images/projects/ironman/blocks/3/value/image.webp
-    background: '#d4d4d4'
-    fit: cover
-    rounded: true
-- discriminant: text
-  value:
-    columns:
-    - I knew creativity was part of me long before I had the words for it. Design,
-      art, and curiosity always felt natural — less like a skill I picked up, more
-      like a lens through which I see the world. For over 11 years, I’ve been turning
-      ambitious ideas into brands, shaping digital products with purpose, and helping
-      visions become something tangible, usable, and alive.
-- discriminant: image
-  value:
-    image: /images/projects/ironman/blocks/5/value/image.webp
-    background: '#171717'
-    fit: cover
-    rounded: true
-- discriminant: pair
-  value:
-    left:
-      image: /images/projects/ironman/blocks/6/value/left/image.webp
-      background: '#9b8f87'
-    right:
-      image: /images/projects/ironman/blocks/6/value/right/image.webp
-      background: '#c60f2d'
+  - discriminant: text
+    value:
+      columns:
+        - >-
+          I knew creativity was part of me long before I had the words for it.
+          Design, art, and curiosity always felt natural — less like a skill I
+          picked up, more like a lens through which I see the world. For over 11
+          years, I’ve been turning ambitious ideas into brands, shaping digital
+          products with purpose, and helping visions become something tangible,
+          usable, and alive.
+        - >-
+          Now, when I’m not feeding my endurance sports addiction, I work as a
+          freelance multidisciplinary designer and as a Senior Product Designer
+          at STRV. I’ve led design phases for clients including Arnold
+          Schwarzenegger, MLS, IRONMAN, NHL, and 25+ others. I’m drawn to strong
+          ideas, sharp execution, AND work that has enough personality to leave
+          a mark.
+  - discriminant: pair
+    value:
+      left:
+        image: /images/projects/ironman/blocks/1/value/left/image.webp
+        video: /media/ironman/blocks/1/value/left/video.mp4
+        background: '#c8102e'
+      right:
+        image: /images/projects/ironman/blocks/1/value/right/image.webp
+        background: '#080808'
+  - discriminant: image
+    value:
+      image: /images/projects/ironman/blocks/2/value/image.webp
+      background: '#000000'
+      fit: cover
+      rounded: true
+  - discriminant: image
+    value:
+      image: /images/projects/ironman/blocks/3/value/image.webp
+      background: '#d4d4d4'
+      fit: cover
+      rounded: true
+  - discriminant: text
+    value:
+      columns:
+        - >-
+          I knew creativity was part of me long before I had the words for it.
+          Design, art, and curiosity always felt natural — less like a skill I
+          picked up, more like a lens through which I see the world. For over 11
+          years, I’ve been turning ambitious ideas into brands, shaping digital
+          products with purpose, and helping visions become something tangible,
+          usable, and alive.
+  - discriminant: image
+    value:
+      image: /images/projects/ironman/blocks/5/value/image.webp
+      background: '#171717'
+      fit: cover
+      rounded: true
+  - discriminant: pair
+    value:
+      left:
+        image: /images/projects/ironman/blocks/6/value/left/image.webp
+        background: '#9b8f87'
+      right:
+        image: /images/projects/ironman/blocks/6/value/right/image.webp
+        background: '#c60f2d'
